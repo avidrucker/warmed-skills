@@ -1,0 +1,4912 @@
+1
+00:00:01,280 --> 00:00:05,200
+hey everybody casemirotori here we are
+
+2
+00:00:03,840 --> 00:00:06,799
+at the end of our kickstarter
+
+3
+00:00:05,200 --> 00:00:09,040
+promotional videos this is the last one
+
+4
+00:00:06,799 --> 00:00:10,800
+it's a two-parter if you haven't checked
+
+5
+00:00:09,040 --> 00:00:12,400
+out the kickstarter already please do
+
+6
+00:00:10,800 --> 00:00:13,920
+it's for a graphic novel meow the
+
+7
+00:00:12,400 --> 00:00:15,519
+infinite it's awesome we'd love to send
+
+8
+00:00:13,920 --> 00:00:16,880
+you a book or two please check it out
+
+9
+00:00:15,519 --> 00:00:19,520
+when you get a chance
+
+10
+00:00:16,880 --> 00:00:22,320
+this video is an invited lecture that i
+
+11
+00:00:19,520 --> 00:00:24,480
+gave to a company called infuria.io
+
+12
+00:00:22,320 --> 00:00:26,720
+and i submitted like a thing saying
+
+13
+00:00:24,480 --> 00:00:28,560
+please give me topics that that you'd
+
+14
+00:00:26,720 --> 00:00:30,400
+like me to cover and one of the things
+
+15
+00:00:28,560 --> 00:00:32,160
+that i saw in a lot of the topics that
+
+16
+00:00:30,400 --> 00:00:34,399
+came back was sort of this underlying
+
+17
+00:00:32,160 --> 00:00:36,640
+concept of like code kind of getting out
+
+18
+00:00:34,399 --> 00:00:38,879
+of control like being you know to huge
+
+19
+00:00:36,640 --> 00:00:39,920
+code bases and slow and underperforming
+
+20
+00:00:38,879 --> 00:00:41,920
+and so on
+
+21
+00:00:39,920 --> 00:00:44,800
+and so this was my attempt to give sort
+
+22
+00:00:41,920 --> 00:00:46,000
+of a general audience answer to the
+
+23
+00:00:44,800 --> 00:00:48,000
+question
+
+24
+00:00:46,000 --> 00:00:50,800
+where does bad code come from like where
+
+25
+00:00:48,000 --> 00:00:52,320
+do these problems come from
+
+26
+00:00:50,800 --> 00:00:53,920
+this is a two-parter the first part is
+
+27
+00:00:52,320 --> 00:00:56,320
+the lecture the second part will be the
+
+28
+00:00:53,920 --> 00:01:00,160
+q a so i hope you enjoy it and i'll be
+
+29
+00:00:56,320 --> 00:01:03,120
+back afterwards to talk about part two
+
+30
+00:01:00,160 --> 00:01:05,760
+where does bad code come from
+
+31
+00:01:03,120 --> 00:01:07,200
+we kind of know that it's everywhere
+
+32
+00:01:05,760 --> 00:01:09,760
+right now like
+
+33
+00:01:07,200 --> 00:01:11,840
+there's a sense if you have experienced
+
+34
+00:01:09,760 --> 00:01:13,920
+programming for a long time or if you
+
+35
+00:01:11,840 --> 00:01:15,439
+just in general look at the way things
+
+36
+00:01:13,920 --> 00:01:18,240
+are going from a
+
+37
+00:01:15,439 --> 00:01:20,400
+removed sort of more objective observer
+
+38
+00:01:18,240 --> 00:01:23,680
+standpoint you can see that there seems
+
+39
+00:01:20,400 --> 00:01:24,560
+to be a lot wrong with software today
+
+40
+00:01:23,680 --> 00:01:26,880
+and
+
+41
+00:01:24,560 --> 00:01:29,119
+first of all there's way too much code a
+
+42
+00:01:26,880 --> 00:01:32,079
+lot of the times even fairly simple
+
+43
+00:01:29,119 --> 00:01:34,159
+pieces of software now are like hundreds
+
+44
+00:01:32,079 --> 00:01:36,400
+of thousands of lines of code millions
+
+45
+00:01:34,159 --> 00:01:38,240
+of lines of code and so on uh they're
+
+46
+00:01:36,400 --> 00:01:41,040
+typically built in these
+
+47
+00:01:38,240 --> 00:01:43,439
+very very fragile build systems
+
+48
+00:01:41,040 --> 00:01:45,280
+oftentimes so complicated that they end
+
+49
+00:01:43,439 --> 00:01:46,799
+up having to be wrapped inside things
+
+50
+00:01:45,280 --> 00:01:49,600
+like docker containers or things like
+
+51
+00:01:46,799 --> 00:01:51,360
+this even to just try and get them to
+
+52
+00:01:49,600 --> 00:01:53,600
+keep running into the future because
+
+53
+00:01:51,360 --> 00:01:55,040
+they have so many crazy dependencies and
+
+54
+00:01:53,600 --> 00:01:56,640
+there's really no way to guarantee that
+
+55
+00:01:55,040 --> 00:01:58,560
+all the things will remain working or
+
+56
+00:01:56,640 --> 00:01:59,520
+will remain in lockstep as they move
+
+57
+00:01:58,560 --> 00:02:01,840
+forward
+
+58
+00:01:59,520 --> 00:02:03,680
+um when you actually do have everything
+
+59
+00:02:01,840 --> 00:02:05,360
+installed properly on your machine and
+
+60
+00:02:03,680 --> 00:02:07,040
+when you've finished having a package
+
+61
+00:02:05,360 --> 00:02:08,959
+manager install the language which
+
+62
+00:02:07,040 --> 00:02:10,879
+installs some package manager which then
+
+63
+00:02:08,959 --> 00:02:12,319
+goes and gets the packages which unpack
+
+64
+00:02:10,879 --> 00:02:14,319
+which install their own packages blah
+
+65
+00:02:12,319 --> 00:02:15,760
+blah after you manage to get all of that
+
+66
+00:02:14,319 --> 00:02:18,239
+going and you actually can run a build
+
+67
+00:02:15,760 --> 00:02:20,879
+the builds take forever sometimes things
+
+68
+00:02:18,239 --> 00:02:22,319
+like tensorflow or stuff like this that
+
+69
+00:02:20,879 --> 00:02:24,800
+a lot of people use that are very
+
+70
+00:02:22,319 --> 00:02:27,120
+popular projects seem to take hours to
+
+71
+00:02:24,800 --> 00:02:29,040
+build sometimes which is absolutely
+
+72
+00:02:27,120 --> 00:02:30,640
+incredible if you think about how much
+
+73
+00:02:29,040 --> 00:02:32,400
+power computers have today that the
+
+74
+00:02:30,640 --> 00:02:34,080
+things could take that long to build
+
+75
+00:02:32,400 --> 00:02:36,400
+when the actual software comes out the
+
+76
+00:02:34,080 --> 00:02:38,560
+other end the quality is not very high
+
+77
+00:02:36,400 --> 00:02:40,640
+there's a lot of sitting around waiting
+
+78
+00:02:38,560 --> 00:02:43,040
+for it to do things like load or
+
+79
+00:02:40,640 --> 00:02:44,400
+communicate with a network and it really
+
+80
+00:02:43,040 --> 00:02:45,840
+kind of just stalls while that's
+
+81
+00:02:44,400 --> 00:02:47,120
+happening and doesn't really let you do
+
+82
+00:02:45,840 --> 00:02:49,200
+very much
+
+83
+00:02:47,120 --> 00:02:50,560
+it's slow when it actually does things
+
+84
+00:02:49,200 --> 00:02:52,480
+things that probably should be much
+
+85
+00:02:50,560 --> 00:02:54,319
+faster on today's hardware are not
+
+86
+00:02:52,480 --> 00:02:57,280
+they're still quite slow
+
+87
+00:02:54,319 --> 00:02:59,280
+um it takes a ton of space as well so
+
+88
+00:02:57,280 --> 00:03:01,360
+not only do these programs now take up
+
+89
+00:02:59,280 --> 00:03:04,720
+huge amounts of space you have like 100
+
+90
+00:03:01,360 --> 00:03:06,480
+200 megabyte executables which is insane
+
+91
+00:03:04,720 --> 00:03:08,319
+and their working footprints are like
+
+92
+00:03:06,480 --> 00:03:10,319
+many gigabytes of memory even for doing
+
+93
+00:03:08,319 --> 00:03:12,400
+things that seem very simple like just
+
+94
+00:03:10,319 --> 00:03:14,480
+scrolling some 2d images or things that
+
+95
+00:03:12,400 --> 00:03:16,080
+are very basic nonetheless are taking
+
+96
+00:03:14,480 --> 00:03:18,959
+tremendous amounts of storage tremendous
+
+97
+00:03:16,080 --> 00:03:21,040
+amounts of memory it's just kind of very
+
+98
+00:03:18,959 --> 00:03:23,440
+odd that that would be going on and
+
+99
+00:03:21,040 --> 00:03:25,200
+finally it's not like software got
+
+100
+00:03:23,440 --> 00:03:28,159
+tremendously more reliable or something
+
+101
+00:03:25,200 --> 00:03:29,840
+else happened it's still totally buggy
+
+102
+00:03:28,159 --> 00:03:32,720
+and it has all the same problems if not
+
+103
+00:03:29,840 --> 00:03:35,840
+more problems than it has always had
+
+104
+00:03:32,720 --> 00:03:38,319
+before it sort of jumped uh this level
+
+105
+00:03:35,840 --> 00:03:41,440
+of sort of kind of complexity and and
+
+106
+00:03:38,319 --> 00:03:43,920
+kind of in general this this overall uh
+
+107
+00:03:41,440 --> 00:03:45,760
+overriding sort of sense of decay that
+
+108
+00:03:43,920 --> 00:03:47,760
+seems to be seeping in
+
+109
+00:03:45,760 --> 00:03:50,480
+to whatever we call the software
+
+110
+00:03:47,760 --> 00:03:51,440
+industry currently
+
+111
+00:03:50,480 --> 00:03:53,200
+and so
+
+112
+00:03:51,440 --> 00:03:56,000
+thinking about this if we want to
+
+113
+00:03:53,200 --> 00:03:57,840
+actually try and talk about where bad
+
+114
+00:03:56,000 --> 00:03:59,200
+code comes from we have to start making
+
+115
+00:03:57,840 --> 00:04:01,360
+some judgment calls about what do we
+
+116
+00:03:59,200 --> 00:04:03,040
+mean when we say bad code anyway i can
+
+117
+00:04:01,360 --> 00:04:05,360
+talk about all those things and and
+
+118
+00:04:03,040 --> 00:04:07,760
+complain about stuff but if i don't
+
+119
+00:04:05,360 --> 00:04:09,599
+really have some kind of a more specific
+
+120
+00:04:07,760 --> 00:04:10,879
+understanding of what it really is that
+
+121
+00:04:09,599 --> 00:04:12,560
+i'm talking about
+
+122
+00:04:10,879 --> 00:04:14,000
+it's not going to be possible for us to
+
+123
+00:04:12,560 --> 00:04:16,000
+like get anywhere we can't really get
+
+124
+00:04:14,000 --> 00:04:17,440
+anywhere fixing the problem we're just
+
+125
+00:04:16,000 --> 00:04:19,759
+sort of saying that the problem exists
+
+126
+00:04:17,440 --> 00:04:21,519
+which is great but we do have to then
+
+127
+00:04:19,759 --> 00:04:23,440
+figure out how are we going to move
+
+128
+00:04:21,519 --> 00:04:25,919
+forward so i'm going to make a little
+
+129
+00:04:23,440 --> 00:04:27,840
+bit of a judgment call here and say when
+
+130
+00:04:25,919 --> 00:04:29,440
+i'm talking about bad code or what we
+
+131
+00:04:27,840 --> 00:04:30,960
+should be concerned about with bad code
+
+132
+00:04:29,440 --> 00:04:33,120
+it doesn't really have much to do with
+
+133
+00:04:30,960 --> 00:04:35,680
+money if you're talking about wanting to
+
+134
+00:04:33,120 --> 00:04:37,440
+make money i don't think the current
+
+135
+00:04:35,680 --> 00:04:38,400
+environment anyway at least for the time
+
+136
+00:04:37,440 --> 00:04:40,479
+being
+
+137
+00:04:38,400 --> 00:04:42,960
+really cares that much about the quality
+
+138
+00:04:40,479 --> 00:04:44,880
+of your code i think there's so little
+
+139
+00:04:42,960 --> 00:04:46,960
+competition in the software space right
+
+140
+00:04:44,880 --> 00:04:49,199
+now because there's so much software to
+
+141
+00:04:46,960 --> 00:04:52,080
+write we're still relatively early in
+
+142
+00:04:49,199 --> 00:04:55,919
+the evolution of software there's still
+
+143
+00:04:52,080 --> 00:04:57,520
+so many places you can take software too
+
+144
+00:04:55,919 --> 00:05:00,000
+that there isn't a lot of market
+
+145
+00:04:57,520 --> 00:05:02,080
+pressure to ship high quality stuff a
+
+146
+00:05:00,000 --> 00:05:04,080
+lot of times consumers
+
+147
+00:05:02,080 --> 00:05:06,880
+or whoever your customers are are
+
+148
+00:05:04,080 --> 00:05:09,840
+choosing between a very small field of
+
+149
+00:05:06,880 --> 00:05:11,360
+options so being someone who ships a
+
+150
+00:05:09,840 --> 00:05:13,600
+quality product while it may be a
+
+151
+00:05:11,360 --> 00:05:14,560
+tremendous competitive advantage if you
+
+152
+00:05:13,600 --> 00:05:17,440
+do it
+
+153
+00:05:14,560 --> 00:05:19,520
+will not exactly be a requirement
+
+154
+00:05:17,440 --> 00:05:21,680
+competitively because other people are
+
+155
+00:05:19,520 --> 00:05:24,080
+not shipping quality software so you
+
+156
+00:05:21,680 --> 00:05:25,680
+really don't need this to make money yet
+
+157
+00:05:24,080 --> 00:05:27,120
+you might in the future but i'm not
+
+158
+00:05:25,680 --> 00:05:29,280
+gonna try and make an argument that you
+
+159
+00:05:27,120 --> 00:05:30,720
+need to do this uh for your financial
+
+160
+00:05:29,280 --> 00:05:32,720
+well-being of your company or your
+
+161
+00:05:30,720 --> 00:05:34,639
+career whatever or anything like that
+
+162
+00:05:32,720 --> 00:05:36,479
+and i'm also not claiming that people
+
+163
+00:05:34,639 --> 00:05:38,240
+aren't having fun or anything like that
+
+164
+00:05:36,479 --> 00:05:39,919
+they might not be it may be that current
+
+165
+00:05:38,240 --> 00:05:41,759
+software practices are really not fun
+
+166
+00:05:39,919 --> 00:05:44,320
+for them but it could be that you know
+
+167
+00:05:41,759 --> 00:05:46,000
+you just drop on your vr goggles and you
+
+168
+00:05:44,320 --> 00:05:46,880
+you download a bunch of frameworks and
+
+169
+00:05:46,000 --> 00:05:48,080
+you get them all called together
+
+170
+00:05:46,880 --> 00:05:49,840
+eventually and you just play around with
+
+171
+00:05:48,080 --> 00:05:51,759
+it and you had fun and it was okay right
+
+172
+00:05:49,840 --> 00:05:53,440
+who knows right so i'm not going to
+
+173
+00:05:51,759 --> 00:05:54,720
+claim either of those two things because
+
+174
+00:05:53,440 --> 00:05:56,319
+i don't think
+
+175
+00:05:54,720 --> 00:05:57,919
+there's really any need to go down that
+
+176
+00:05:56,319 --> 00:05:59,360
+route because all i'm trying to talk
+
+177
+00:05:57,919 --> 00:06:00,160
+about when we talk about bad code is
+
+178
+00:05:59,360 --> 00:06:02,400
+like
+
+179
+00:06:00,160 --> 00:06:05,039
+what's our potential like like what
+
+180
+00:06:02,400 --> 00:06:07,039
+could we be doing what could we be doing
+
+181
+00:06:05,039 --> 00:06:08,960
+engineering-wise
+
+182
+00:06:07,039 --> 00:06:11,120
+versus where we currently are are we
+
+183
+00:06:08,960 --> 00:06:13,440
+performing up to that potential at all
+
+184
+00:06:11,120 --> 00:06:15,120
+or are we actually kind of falling
+
+185
+00:06:13,440 --> 00:06:17,199
+pretty far behind
+
+186
+00:06:15,120 --> 00:06:20,319
+where we could be if we looked at what
+
+187
+00:06:17,199 --> 00:06:23,120
+we could be delivering to our customers
+
+188
+00:06:20,319 --> 00:06:25,440
+and to society if we took things more
+
+189
+00:06:23,120 --> 00:06:26,800
+seriously right so i don't think we have
+
+190
+00:06:25,440 --> 00:06:29,199
+to do this
+
+191
+00:06:26,800 --> 00:06:30,800
+it's just if you care about quality
+
+192
+00:06:29,199 --> 00:06:32,479
+what are we talking about here so that's
+
+193
+00:06:30,800 --> 00:06:33,919
+what i mean when i say bad code i say
+
+194
+00:06:32,479 --> 00:06:36,240
+we're looking at something that seems
+
+195
+00:06:33,919 --> 00:06:37,759
+like boy we should be able to do a lot
+
+196
+00:06:36,240 --> 00:06:40,080
+better than this
+
+197
+00:06:37,759 --> 00:06:41,440
+why aren't we right
+
+198
+00:06:40,080 --> 00:06:43,759
+now it's important to distinguish
+
+199
+00:06:41,440 --> 00:06:45,280
+between two things
+
+200
+00:06:43,759 --> 00:06:47,440
+i actually think
+
+201
+00:06:45,280 --> 00:06:49,919
+as an industry we haven't done that
+
+202
+00:06:47,440 --> 00:06:52,720
+poorly on algorithms
+
+203
+00:06:49,919 --> 00:06:54,960
+algorithms are actually understood in
+
+204
+00:06:52,720 --> 00:06:56,880
+some pretty profound ways i think the
+
+205
+00:06:54,960 --> 00:06:58,800
+people who have done all the work
+
+206
+00:06:56,880 --> 00:07:00,560
+figuring out like order notation and
+
+207
+00:06:58,800 --> 00:07:02,000
+what the complexity classes of things
+
+208
+00:07:00,560 --> 00:07:04,960
+are and you know they haven't proved
+
+209
+00:07:02,000 --> 00:07:06,880
+whether p equals np yet or whatever
+
+210
+00:07:04,960 --> 00:07:08,960
+but at the end of the day
+
+211
+00:07:06,880 --> 00:07:10,880
+there's a lot of stuff we know like we
+
+212
+00:07:08,960 --> 00:07:12,560
+know how to analyze hash tables and how
+
+213
+00:07:10,880 --> 00:07:14,880
+to think about them we know
+
+214
+00:07:12,560 --> 00:07:16,800
+uh like what the properties are of a
+
+215
+00:07:14,880 --> 00:07:18,960
+heap or what different sorting
+
+216
+00:07:16,800 --> 00:07:21,280
+algorithms will do like we have a lot of
+
+217
+00:07:18,960 --> 00:07:23,360
+ways of thinking about algorithms and
+
+218
+00:07:21,280 --> 00:07:25,919
+furthermore a lot of the advice you see
+
+219
+00:07:23,360 --> 00:07:29,039
+about algorithms may not be awful like
+
+220
+00:07:25,919 --> 00:07:31,360
+it's possible that in general you can
+
+221
+00:07:29,039 --> 00:07:33,199
+experience algorithms in a pretty sane
+
+222
+00:07:31,360 --> 00:07:34,319
+way you can be taught algorithms in the
+
+223
+00:07:33,199 --> 00:07:35,759
+same way
+
+224
+00:07:34,319 --> 00:07:37,840
+you can think about them the same way
+
+225
+00:07:35,759 --> 00:07:40,880
+that's actually i don't think all that
+
+226
+00:07:37,840 --> 00:07:42,880
+unusual so if i was to put a pin you
+
+227
+00:07:40,880 --> 00:07:45,360
+know if i was trying to point a finger
+
+228
+00:07:42,880 --> 00:07:47,120
+and say this is the place that i think
+
+229
+00:07:45,360 --> 00:07:49,840
+that we're going wrong
+
+230
+00:07:47,120 --> 00:07:52,879
+algorithms and like the actual specific
+
+231
+00:07:49,840 --> 00:07:55,120
+idea of specifically how some piece of a
+
+232
+00:07:52,879 --> 00:07:57,360
+program is going to work algorithmically
+
+233
+00:07:55,120 --> 00:07:59,360
+it just doesn't seem like what we're
+
+234
+00:07:57,360 --> 00:08:01,759
+really talking about when we're talking
+
+235
+00:07:59,360 --> 00:08:03,680
+about the bulk of bad code as we
+
+236
+00:08:01,759 --> 00:08:05,919
+perceive it or bad software as we
+
+237
+00:08:03,680 --> 00:08:07,919
+perceive it it's usually not like what
+
+238
+00:08:05,919 --> 00:08:09,039
+sorting you know algorithm did you
+
+239
+00:08:07,919 --> 00:08:10,639
+choose
+
+240
+00:08:09,039 --> 00:08:13,039
+usually what we're talking about is the
+
+241
+00:08:10,639 --> 00:08:16,400
+mess of the rest of the code we are
+
+242
+00:08:13,039 --> 00:08:18,160
+having a problem writing all the code
+
+243
+00:08:16,400 --> 00:08:19,360
+that glues these algorithms together
+
+244
+00:08:18,160 --> 00:08:21,280
+right like when we're talking about what
+
+245
+00:08:19,360 --> 00:08:23,919
+we're actually going to do here the
+
+246
+00:08:21,280 --> 00:08:26,240
+problem that we actually have is not so
+
+247
+00:08:23,919 --> 00:08:29,039
+much that like we couldn't sit down and
+
+248
+00:08:26,240 --> 00:08:31,520
+figure out what the proper algorithm is
+
+249
+00:08:29,039 --> 00:08:33,919
+here for this the problem seems to be
+
+250
+00:08:31,520 --> 00:08:35,919
+more that we can't figure out how to
+
+251
+00:08:33,919 --> 00:08:38,399
+connect these things or how to manage
+
+252
+00:08:35,919 --> 00:08:41,279
+the infrastructure into which these
+
+253
+00:08:38,399 --> 00:08:43,360
+algorithms are placed that seems to just
+
+254
+00:08:41,279 --> 00:08:45,839
+not work right it seems to be like that
+
+255
+00:08:43,360 --> 00:08:47,760
+is what's going off the rails
+
+256
+00:08:45,839 --> 00:08:48,880
+and so the question is how did we get
+
+257
+00:08:47,760 --> 00:08:50,800
+there
+
+258
+00:08:48,880 --> 00:08:52,320
+in the old days that really couldn't be
+
+259
+00:08:50,800 --> 00:08:54,000
+the case because there were hard
+
+260
+00:08:52,320 --> 00:08:57,279
+constraints on what you could ship when
+
+261
+00:08:54,000 --> 00:08:58,080
+a computer only has 64k of ram in it
+
+262
+00:08:57,279 --> 00:09:00,640
+right
+
+263
+00:08:58,080 --> 00:09:02,720
+there's no way for that glue code to
+
+264
+00:09:00,640 --> 00:09:05,680
+spiral out of control there's no way for
+
+265
+00:09:02,720 --> 00:09:08,560
+the infrastructure to be all that big to
+
+266
+00:09:05,680 --> 00:09:10,480
+begin with so there is a natural limit
+
+267
+00:09:08,560 --> 00:09:12,320
+on what could actually happen there and
+
+268
+00:09:10,480 --> 00:09:14,720
+it seemed to be working
+
+269
+00:09:12,320 --> 00:09:15,680
+to that effect nowadays we don't have
+
+270
+00:09:14,720 --> 00:09:17,279
+that
+
+271
+00:09:15,680 --> 00:09:19,519
+and it seems like we have never
+
+272
+00:09:17,279 --> 00:09:21,040
+developed any replacement for it
+
+273
+00:09:19,519 --> 00:09:23,200
+so the question is like
+
+274
+00:09:21,040 --> 00:09:25,120
+why and in order to understand why we
+
+275
+00:09:23,200 --> 00:09:26,560
+haven't developed a replacement for it
+
+276
+00:09:25,120 --> 00:09:28,959
+i'm going to have to talk a little bit
+
+277
+00:09:26,560 --> 00:09:31,040
+about how you actually learn to make
+
+278
+00:09:28,959 --> 00:09:32,560
+stuff like on a computer
+
+279
+00:09:31,040 --> 00:09:34,800
+and i realize it's going to sound very
+
+280
+00:09:32,560 --> 00:09:36,959
+trite maybe to people who are listening
+
+281
+00:09:34,800 --> 00:09:38,320
+to this who aren't programmers it won't
+
+282
+00:09:36,959 --> 00:09:40,560
+but to people who are programmers this
+
+283
+00:09:38,320 --> 00:09:42,320
+is gonna sound uh a little bit silly
+
+284
+00:09:40,560 --> 00:09:45,040
+right but please
+
+285
+00:09:42,320 --> 00:09:47,440
+think about it actually think about this
+
+286
+00:09:45,040 --> 00:09:48,959
+for a second because if you actually
+
+287
+00:09:47,440 --> 00:09:51,600
+think about it for a second you'll
+
+288
+00:09:48,959 --> 00:09:53,440
+realize that we all take it for granted
+
+289
+00:09:51,600 --> 00:09:55,040
+right we all take for granted that this
+
+290
+00:09:53,440 --> 00:09:58,080
+is going on and nobody talks about it
+
+291
+00:09:55,040 --> 00:10:00,560
+but we kind of need to right
+
+292
+00:09:58,080 --> 00:10:02,800
+so nobody's born knowing how to program
+
+293
+00:10:00,560 --> 00:10:04,399
+a computer right and and i know this
+
+294
+00:10:02,800 --> 00:10:06,800
+better than anybody because i learned a
+
+295
+00:10:04,399 --> 00:10:08,880
+program at a very early age but before i
+
+296
+00:10:06,800 --> 00:10:11,200
+could learn to program i actually
+
+297
+00:10:08,880 --> 00:10:14,079
+literally sat i was a little tiny child
+
+298
+00:10:11,200 --> 00:10:17,360
+i sat at a keyboard right that my
+
+299
+00:10:14,079 --> 00:10:19,839
+parents had my dad had i would just type
+
+300
+00:10:17,360 --> 00:10:22,640
+i would type gibberish into the computer
+
+301
+00:10:19,839 --> 00:10:24,800
+right and if you think about it like you
+
+302
+00:10:22,640 --> 00:10:26,720
+first learn to just input characters or
+
+303
+00:10:24,800 --> 00:10:28,160
+something into a computer and if you're
+
+304
+00:10:26,720 --> 00:10:29,360
+young enough they're literally just
+
+305
+00:10:28,160 --> 00:10:32,079
+garbage
+
+306
+00:10:29,360 --> 00:10:35,200
+but soon what you're doing is your brain
+
+307
+00:10:32,079 --> 00:10:37,839
+right is training itself up
+
+308
+00:10:35,200 --> 00:10:41,040
+to learn that only certain combinations
+
+309
+00:10:37,839 --> 00:10:43,680
+of letters right only certain syntax
+
+310
+00:10:41,040 --> 00:10:45,440
+will produce a result if you're using a
+
+311
+00:10:43,680 --> 00:10:46,800
+programming language this is why we call
+
+312
+00:10:45,440 --> 00:10:48,320
+them languages right they have grammar
+
+313
+00:10:46,800 --> 00:10:49,760
+they have syntax all this sort of stuff
+
+314
+00:10:48,320 --> 00:10:52,320
+right
+
+315
+00:10:49,760 --> 00:10:54,160
+and so something in your brain
+
+316
+00:10:52,320 --> 00:10:55,680
+and we're not advanced enough
+
+317
+00:10:54,160 --> 00:10:57,760
+technologically to know like what's
+
+318
+00:10:55,680 --> 00:10:58,959
+actually going on exactly but something
+
+319
+00:10:57,760 --> 00:11:00,480
+in your brain
+
+320
+00:10:58,959 --> 00:11:03,120
+is creating
+
+321
+00:11:00,480 --> 00:11:05,760
+a filter and a generator
+
+322
+00:11:03,120 --> 00:11:08,079
+something that's able to produce valid
+
+323
+00:11:05,760 --> 00:11:12,160
+syntax for a particular language
+
+324
+00:11:08,079 --> 00:11:14,640
+and also able to like you know throw out
+
+325
+00:11:12,160 --> 00:11:16,959
+ones of those that it wouldn't want or
+
+326
+00:11:14,640 --> 00:11:18,480
+wouldn't need or that don't get closer
+
+327
+00:11:16,959 --> 00:11:19,920
+to something right
+
+328
+00:11:18,480 --> 00:11:21,600
+it's got a metric
+
+329
+00:11:19,920 --> 00:11:23,200
+and so if you think about this in terms
+
+330
+00:11:21,600 --> 00:11:24,560
+of like ai research or something like
+
+331
+00:11:23,200 --> 00:11:26,720
+that right
+
+332
+00:11:24,560 --> 00:11:29,120
+there's a training process you have to
+
+333
+00:11:26,720 --> 00:11:30,880
+train up some generator to generate
+
+334
+00:11:29,120 --> 00:11:33,279
+things that are valid in the output
+
+335
+00:11:30,880 --> 00:11:35,680
+domain and then you need some kind of
+
+336
+00:11:33,279 --> 00:11:37,600
+filtering process that's going to take
+
+337
+00:11:35,680 --> 00:11:39,600
+and get you closer to whatever it is
+
+338
+00:11:37,600 --> 00:11:42,399
+that you're trying to achieve with that
+
+339
+00:11:39,600 --> 00:11:44,079
+generative process right and so this
+
+340
+00:11:42,399 --> 00:11:46,640
+builds and builds over time when you're
+
+341
+00:11:44,079 --> 00:11:48,959
+a programmer right it builds over time
+
+342
+00:11:46,640 --> 00:11:51,440
+and in your head you start to learn that
+
+343
+00:11:48,959 --> 00:11:53,120
+you can make new parts of this right
+
+344
+00:11:51,440 --> 00:11:55,040
+like functions and things like that or
+
+345
+00:11:53,120 --> 00:11:56,880
+get new ones from libraries and you're
+
+346
+00:11:55,040 --> 00:11:58,720
+starting to think at like a higher level
+
+347
+00:11:56,880 --> 00:12:00,720
+so that generator is now generating
+
+348
+00:11:58,720 --> 00:12:02,160
+things higher up and again filtering
+
+349
+00:12:00,720 --> 00:12:04,240
+things higher up
+
+350
+00:12:02,160 --> 00:12:05,440
+and then finally you look at experienced
+
+351
+00:12:04,240 --> 00:12:07,600
+programmers people in printer a long
+
+352
+00:12:05,440 --> 00:12:08,880
+time not necessarily good or bad just
+
+353
+00:12:07,600 --> 00:12:11,200
+experienced
+
+354
+00:12:08,880 --> 00:12:14,720
+their code just be very regularized
+
+355
+00:12:11,200 --> 00:12:18,079
+right so that filter has dialed in quite
+
+356
+00:12:14,720 --> 00:12:20,720
+a bit right they're throwing out a lot
+
+357
+00:12:18,079 --> 00:12:21,920
+of possible options that would be legal
+
+358
+00:12:20,720 --> 00:12:25,680
+in the language they're programming at
+
+359
+00:12:21,920 --> 00:12:27,839
+and only selecting from a very very
+
+360
+00:12:25,680 --> 00:12:30,480
+narrow set so that generator filter
+
+361
+00:12:27,839 --> 00:12:33,519
+process is producing highly regularized
+
+362
+00:12:30,480 --> 00:12:35,760
+very predictable things at that point
+
+363
+00:12:33,519 --> 00:12:37,920
+which we don't know what that means
+
+364
+00:12:35,760 --> 00:12:40,000
+right and we can't understand it at a
+
+365
+00:12:37,920 --> 00:12:41,600
+deep under like you know uh
+
+366
+00:12:40,000 --> 00:12:44,399
+physiological level
+
+367
+00:12:41,600 --> 00:12:47,839
+but what we do know is it means a huge
+
+368
+00:12:44,399 --> 00:12:49,120
+possibility space has been carved off
+
+369
+00:12:47,839 --> 00:12:51,440
+of that system
+
+370
+00:12:49,120 --> 00:12:53,680
+we all know that when we first learned
+
+371
+00:12:51,440 --> 00:12:55,680
+to type in babel like you know just the
+
+372
+00:12:53,680 --> 00:12:58,079
+literal syntax of the language
+
+373
+00:12:55,680 --> 00:12:59,920
+anything was possible right
+
+374
+00:12:58,079 --> 00:13:01,600
+you just type anything in that was legal
+
+375
+00:12:59,920 --> 00:13:02,560
+in the language and you could type it in
+
+376
+00:13:01,600 --> 00:13:05,600
+right
+
+377
+00:13:02,560 --> 00:13:07,279
+and over time you lose the ability to
+
+378
+00:13:05,600 --> 00:13:09,200
+type certain things in
+
+379
+00:13:07,279 --> 00:13:10,320
+and it's not like you couldn't force
+
+380
+00:13:09,200 --> 00:13:12,399
+yourself to
+
+381
+00:13:10,320 --> 00:13:14,079
+it's just you don't right
+
+382
+00:13:12,399 --> 00:13:15,839
+so you've tuned the generator and the
+
+383
+00:13:14,079 --> 00:13:18,800
+filter in your brain to just do a
+
+384
+00:13:15,839 --> 00:13:20,240
+certain narrow subset of things
+
+385
+00:13:18,800 --> 00:13:22,560
+and what we think when we think of
+
+386
+00:13:20,240 --> 00:13:25,279
+experienced programmer is that that was
+
+387
+00:13:22,560 --> 00:13:27,920
+good that was a good process now they're
+
+388
+00:13:25,279 --> 00:13:29,440
+producing like good code or something
+
+389
+00:13:27,920 --> 00:13:31,680
+right
+
+390
+00:13:29,440 --> 00:13:33,200
+i know it sounded silly hopefully though
+
+391
+00:13:31,680 --> 00:13:35,200
+when we get to the end there you're not
+
+392
+00:13:33,200 --> 00:13:37,120
+too disagreeing with me about the fact
+
+393
+00:13:35,200 --> 00:13:38,959
+that something like this must be going
+
+394
+00:13:37,120 --> 00:13:40,959
+on in our brains
+
+395
+00:13:38,959 --> 00:13:42,720
+so our brains have learned this filter
+
+396
+00:13:40,959 --> 00:13:44,959
+process this thing that's going on and
+
+397
+00:13:42,720 --> 00:13:46,320
+we all have a slightly different one
+
+398
+00:13:44,959 --> 00:13:47,519
+right
+
+399
+00:13:46,320 --> 00:13:49,920
+but anyone who's been programming for
+
+400
+00:13:47,519 --> 00:13:51,199
+any appreciation of time has formed this
+
+401
+00:13:49,920 --> 00:13:53,040
+somehow
+
+402
+00:13:51,199 --> 00:13:55,120
+now i like to think of this as a
+
+403
+00:13:53,040 --> 00:13:56,399
+metaphor uh in my brain i always kind of
+
+404
+00:13:55,120 --> 00:13:57,760
+think of it this way
+
+405
+00:13:56,399 --> 00:13:59,680
+because i don't really know how to think
+
+406
+00:13:57,760 --> 00:14:01,760
+about it and the way i think about it is
+
+407
+00:13:59,680 --> 00:14:04,399
+exploration right
+
+408
+00:14:01,760 --> 00:14:06,720
+i started out in my co-bases in some
+
+409
+00:14:04,399 --> 00:14:08,240
+sense and i think of that generator
+
+410
+00:14:06,720 --> 00:14:10,399
+process as sort of being like almost
+
+411
+00:14:08,240 --> 00:14:12,079
+like a navigator right like at any point
+
+412
+00:14:10,399 --> 00:14:14,000
+in time when i'm going to figure out
+
+413
+00:14:12,079 --> 00:14:15,680
+like what i'm going to do in the code
+
+414
+00:14:14,000 --> 00:14:17,040
+i'm sort of like thinking like it's like
+
+415
+00:14:15,680 --> 00:14:18,639
+dead reckoning a little bit it's like
+
+416
+00:14:17,040 --> 00:14:20,320
+well i think the answer is probably this
+
+417
+00:14:18,639 --> 00:14:22,399
+way i'm gonna try some things sometimes
+
+418
+00:14:20,320 --> 00:14:24,560
+i backtrack right
+
+419
+00:14:22,399 --> 00:14:26,160
+um and i'm i'm trying to navigate and
+
+420
+00:14:24,560 --> 00:14:27,600
+over time i'm trying to get to a
+
+421
+00:14:26,160 --> 00:14:29,279
+destination that i believe is somewhere
+
+422
+00:14:27,600 --> 00:14:31,199
+but i don't know exactly where it is
+
+423
+00:14:29,279 --> 00:14:32,639
+right and maybe you've had this feeling
+
+424
+00:14:31,199 --> 00:14:34,079
+as well like this kind of feeling like
+
+425
+00:14:32,639 --> 00:14:36,800
+you know it's it's sort of a journey
+
+426
+00:14:34,079 --> 00:14:38,560
+right it's not it's not like things the
+
+427
+00:14:36,800 --> 00:14:40,800
+metaphors people normally use don't
+
+428
+00:14:38,560 --> 00:14:43,920
+actually apply that well it's not like
+
+429
+00:14:40,800 --> 00:14:45,920
+architecture right it's not like other
+
+430
+00:14:43,920 --> 00:14:47,600
+things where we do a lot of solving
+
+431
+00:14:45,920 --> 00:14:50,320
+first and then just kind of
+
+432
+00:14:47,600 --> 00:14:52,160
+put it in there uml diagram people have
+
+433
+00:14:50,320 --> 00:14:54,560
+tried right but it doesn't seem to
+
+434
+00:14:52,160 --> 00:14:56,639
+really go that way it feels more like a
+
+435
+00:14:54,560 --> 00:14:58,240
+journey where we're not really sure
+
+436
+00:14:56,639 --> 00:15:00,160
+about the end result and we're trying to
+
+437
+00:14:58,240 --> 00:15:01,920
+get there right and maybe the better
+
+438
+00:15:00,160 --> 00:15:03,920
+programmers are kind of better at making
+
+439
+00:15:01,920 --> 00:15:05,600
+that journey and the newer programmers
+
+440
+00:15:03,920 --> 00:15:07,680
+who have a lot to learn that you know
+
+441
+00:15:05,600 --> 00:15:09,920
+it's worse right but it feels that way
+
+442
+00:15:07,680 --> 00:15:12,800
+to me it feels more like that
+
+443
+00:15:09,920 --> 00:15:14,639
+and we don't have maps right we're
+
+444
+00:15:12,800 --> 00:15:16,399
+navigators that don't know the lay of
+
+445
+00:15:14,639 --> 00:15:18,000
+the land so we're constantly trying to
+
+446
+00:15:16,399 --> 00:15:20,240
+like kind of figure out
+
+447
+00:15:18,000 --> 00:15:22,480
+as we go that's how i normally think
+
+448
+00:15:20,240 --> 00:15:24,240
+about it and i think about like you know
+
+449
+00:15:22,480 --> 00:15:26,000
+when we're you know setting off on these
+
+450
+00:15:24,240 --> 00:15:27,680
+things and looking for things they could
+
+451
+00:15:26,000 --> 00:15:28,880
+be very like uncharted we could be
+
+452
+00:15:27,680 --> 00:15:30,480
+trying to go somewhere that like no
+
+453
+00:15:28,880 --> 00:15:31,920
+one's ever gone before
+
+454
+00:15:30,480 --> 00:15:33,680
+or we might be just trying to do
+
+455
+00:15:31,920 --> 00:15:35,199
+something we do know pretty well and we
+
+456
+00:15:33,680 --> 00:15:36,560
+kind of understand the route but we
+
+457
+00:15:35,199 --> 00:15:38,079
+might do a little bit differently this
+
+458
+00:15:36,560 --> 00:15:39,360
+time because we know how the route went
+
+459
+00:15:38,079 --> 00:15:41,759
+last time and we think we could improve
+
+460
+00:15:39,360 --> 00:15:44,079
+it things like that right
+
+461
+00:15:41,759 --> 00:15:46,480
+now sometimes this works great we end up
+
+462
+00:15:44,079 --> 00:15:48,240
+in a place that we you know it's
+
+463
+00:15:46,480 --> 00:15:49,279
+fantastic it's everything we dreamed of
+
+464
+00:15:48,240 --> 00:15:50,320
+when we thought we were going to go
+
+465
+00:15:49,279 --> 00:15:52,160
+there
+
+466
+00:15:50,320 --> 00:15:53,600
+other times we just like forget it this
+
+467
+00:15:52,160 --> 00:15:55,920
+thing ain't shipping
+
+468
+00:15:53,600 --> 00:15:58,160
+ditch the boat take as much food as you
+
+469
+00:15:55,920 --> 00:16:01,440
+can walk across the iceberg and let's
+
+470
+00:15:58,160 --> 00:16:03,759
+hope uh that like we encounter another
+
+471
+00:16:01,440 --> 00:16:05,519
+human being before we all die right
+
+472
+00:16:03,759 --> 00:16:07,839
+so you know it it
+
+473
+00:16:05,519 --> 00:16:09,519
+it has sort of the same analogies in a
+
+474
+00:16:07,839 --> 00:16:11,759
+way the way it ends is similar to the
+
+475
+00:16:09,519 --> 00:16:13,040
+way uh journeys end in the real world
+
+476
+00:16:11,759 --> 00:16:14,800
+too sometimes
+
+477
+00:16:13,040 --> 00:16:16,079
+now the path we took to get there i kind
+
+478
+00:16:14,800 --> 00:16:18,560
+of alluded to this
+
+479
+00:16:16,079 --> 00:16:20,240
+has implications uh we can think of that
+
+480
+00:16:18,560 --> 00:16:22,560
+as how the development process went so
+
+481
+00:16:20,240 --> 00:16:25,120
+you know if if this went really straight
+
+482
+00:16:22,560 --> 00:16:27,600
+and clean um you know we were just like
+
+483
+00:16:25,120 --> 00:16:29,519
+okay that was great that was easy right
+
+484
+00:16:27,600 --> 00:16:31,600
+if it was sort of like really messy and
+
+485
+00:16:29,519 --> 00:16:33,120
+kind of all the way around like you know
+
+486
+00:16:31,600 --> 00:16:35,040
+sort of uh
+
+487
+00:16:33,120 --> 00:16:36,800
+really circuitous or we had to backtrack
+
+488
+00:16:35,040 --> 00:16:39,199
+a ton of times you know maybe that was a
+
+489
+00:16:36,800 --> 00:16:40,160
+rougher development process
+
+490
+00:16:39,199 --> 00:16:42,320
+okay
+
+491
+00:16:40,160 --> 00:16:43,920
+the place we end up
+
+492
+00:16:42,320 --> 00:16:45,519
+is kind of how i think of like what
+
+493
+00:16:43,920 --> 00:16:47,440
+we've achieved right it's like the
+
+494
+00:16:45,519 --> 00:16:50,079
+quality like like i did this journey i
+
+495
+00:16:47,440 --> 00:16:52,720
+ended up somewhere and you know when i
+
+496
+00:16:50,079 --> 00:16:54,399
+get there i know you know this is kind
+
+497
+00:16:52,720 --> 00:16:56,959
+of why it's a navigational process with
+
+498
+00:16:54,399 --> 00:16:58,800
+software it's like i don't necessarily
+
+499
+00:16:56,959 --> 00:17:00,000
+know exactly what the thing will be at
+
+500
+00:16:58,800 --> 00:17:01,120
+the end sometimes i don't even really
+
+501
+00:17:00,000 --> 00:17:03,519
+know at all what the thing will be at
+
+502
+00:17:01,120 --> 00:17:05,039
+the end but i will know like when i get
+
+503
+00:17:03,519 --> 00:17:06,720
+there or when i get close enough to it
+
+504
+00:17:05,039 --> 00:17:09,360
+right and that's why it's a very
+
+505
+00:17:06,720 --> 00:17:10,720
+navigational process because much like a
+
+506
+00:17:09,360 --> 00:17:12,160
+kind of function where you can only
+
+507
+00:17:10,720 --> 00:17:14,319
+evaluate it at points and you can't
+
+508
+00:17:12,160 --> 00:17:15,679
+predict really what it's going to be
+
+509
+00:17:14,319 --> 00:17:17,600
+very well
+
+510
+00:17:15,679 --> 00:17:19,360
+we just kind of only know did we you
+
+511
+00:17:17,600 --> 00:17:20,880
+know if we're setting from if we're
+
+512
+00:17:19,360 --> 00:17:22,480
+trying to go from south america to
+
+513
+00:17:20,880 --> 00:17:24,640
+africa right
+
+514
+00:17:22,480 --> 00:17:26,880
+we will probably know when we hit land
+
+515
+00:17:24,640 --> 00:17:28,480
+but before then we may not really know
+
+516
+00:17:26,880 --> 00:17:29,760
+how it's going but we will know when we
+
+517
+00:17:28,480 --> 00:17:31,440
+get there and when we talk to the people
+
+518
+00:17:29,760 --> 00:17:33,039
+there we'll be like is this africa and
+
+519
+00:17:31,440 --> 00:17:34,640
+they'll be like yes right or something
+
+520
+00:17:33,039 --> 00:17:36,000
+right so we'll kind of know when we get
+
+521
+00:17:34,640 --> 00:17:37,600
+there but we won't necessarily know and
+
+522
+00:17:36,000 --> 00:17:40,000
+even when we actually get there we might
+
+523
+00:17:37,600 --> 00:17:42,400
+not know where we are exactly in that
+
+524
+00:17:40,000 --> 00:17:44,799
+area either like maybe we were aiming
+
+525
+00:17:42,400 --> 00:17:46,400
+for uh south africa and we end up in you
+
+526
+00:17:44,799 --> 00:17:48,720
+know up in egypt somehow or something
+
+527
+00:17:46,400 --> 00:17:50,880
+like this right so i kind of think of it
+
+528
+00:17:48,720 --> 00:17:52,960
+as this where we end up is sort of the
+
+529
+00:17:50,880 --> 00:17:54,960
+quality of the result
+
+530
+00:17:52,960 --> 00:17:58,160
+so what we're sort of seeing when we
+
+531
+00:17:54,960 --> 00:18:00,240
+talk about the bad code situation right
+
+532
+00:17:58,160 --> 00:18:02,000
+is in these processes i feel like we're
+
+533
+00:18:00,240 --> 00:18:04,480
+just getting horribly lost like we're
+
+534
+00:18:02,000 --> 00:18:06,559
+just kind of not only are we just like
+
+535
+00:18:04,480 --> 00:18:08,320
+kind of aimlessly creating these huge
+
+536
+00:18:06,559 --> 00:18:09,840
+routes through things that are very
+
+537
+00:18:08,320 --> 00:18:12,320
+wasteful and take way too much time and
+
+538
+00:18:09,840 --> 00:18:14,000
+all these other sorts of things but also
+
+539
+00:18:12,320 --> 00:18:15,760
+when we end up somewhere it doesn't
+
+540
+00:18:14,000 --> 00:18:17,280
+really seem to be very good like it
+
+541
+00:18:15,760 --> 00:18:20,000
+seems like we're kind of nowhere near
+
+542
+00:18:17,280 --> 00:18:22,080
+where we wanted to be right
+
+543
+00:18:20,000 --> 00:18:23,440
+and it feels this way sometimes too this
+
+544
+00:18:22,080 --> 00:18:24,559
+is another reason i like this analogy
+
+545
+00:18:23,440 --> 00:18:25,679
+someone's in the middle of a development
+
+546
+00:18:24,559 --> 00:18:27,360
+process or even at the end you're just
+
+547
+00:18:25,679 --> 00:18:29,600
+like oh man we totally lost our way like
+
+548
+00:18:27,360 --> 00:18:31,760
+like we can't even really see how we
+
+549
+00:18:29,600 --> 00:18:33,280
+would get there and furthermore another
+
+550
+00:18:31,760 --> 00:18:35,360
+reason that i like this analogy is
+
+551
+00:18:33,280 --> 00:18:37,280
+because it feels this way in the moment
+
+552
+00:18:35,360 --> 00:18:38,799
+too sometimes sometimes you're like i
+
+553
+00:18:37,280 --> 00:18:40,320
+just don't know
+
+554
+00:18:38,799 --> 00:18:43,039
+what we would do
+
+555
+00:18:40,320 --> 00:18:45,760
+to get past this like very it's like
+
+556
+00:18:43,039 --> 00:18:47,760
+it's very like intangible in that way
+
+557
+00:18:45,760 --> 00:18:49,200
+you can't quite put your finger on why
+
+558
+00:18:47,760 --> 00:18:51,840
+the code isn't coming out or what you
+
+559
+00:18:49,200 --> 00:18:52,880
+should do you're doing things that you
+
+560
+00:18:51,840 --> 00:18:55,280
+thought
+
+561
+00:18:52,880 --> 00:18:57,280
+right should get you further and they're
+
+562
+00:18:55,280 --> 00:18:58,400
+not or they're just knocking you back or
+
+563
+00:18:57,280 --> 00:19:00,799
+it just doesn't seem coming better it's
+
+564
+00:18:58,400 --> 00:19:03,039
+very like it feels like being lost in a
+
+565
+00:19:00,799 --> 00:19:06,960
+lot of ways
+
+566
+00:19:03,039 --> 00:19:08,559
+okay so in order to understand
+
+567
+00:19:06,960 --> 00:19:09,520
+why that
+
+568
+00:19:08,559 --> 00:19:12,480
+sort of
+
+569
+00:19:09,520 --> 00:19:15,039
+process might be going wrong
+
+570
+00:19:12,480 --> 00:19:17,440
+i want to put the blame
+
+571
+00:19:15,039 --> 00:19:20,320
+because i have an opinion about what is
+
+572
+00:19:17,440 --> 00:19:22,559
+to blame for this process going wrong
+
+573
+00:19:20,320 --> 00:19:25,600
+i just want to put the blame
+
+574
+00:19:22,559 --> 00:19:27,679
+on how we construct
+
+575
+00:19:25,600 --> 00:19:29,919
+that navigational process that filter
+
+576
+00:19:27,679 --> 00:19:31,280
+process in the brain of like navigating
+
+577
+00:19:29,919 --> 00:19:33,760
+what we're going to do
+
+578
+00:19:31,280 --> 00:19:37,360
+as we go code both institutionally and
+
+579
+00:19:33,760 --> 00:19:40,080
+individually how we do that
+
+580
+00:19:37,360 --> 00:19:42,799
+building up that part of brains i think
+
+581
+00:19:40,080 --> 00:19:45,600
+we're now doing a horrible job
+
+582
+00:19:42,799 --> 00:19:48,240
+in the old days the lack of resources
+
+583
+00:19:45,600 --> 00:19:50,960
+the 64k of the machine the fact that it
+
+584
+00:19:48,240 --> 00:19:52,720
+was a 6802 processor which could barely
+
+585
+00:19:50,960 --> 00:19:55,840
+do anything the fact that loads from
+
+586
+00:19:52,720 --> 00:19:58,160
+disc took you know eons
+
+587
+00:19:55,840 --> 00:20:00,480
+meant that that development of that
+
+588
+00:19:58,160 --> 00:20:02,559
+process in anyone's brain who could ever
+
+589
+00:20:00,480 --> 00:20:04,159
+get a program to work at all
+
+590
+00:20:02,559 --> 00:20:07,600
+they had already gone through the
+
+591
+00:20:04,159 --> 00:20:09,679
+process of actually being very aware
+
+592
+00:20:07,600 --> 00:20:11,760
+of what they were doing
+
+593
+00:20:09,679 --> 00:20:14,640
+everything they did
+
+594
+00:20:11,760 --> 00:20:17,120
+would either succeed or fail at all
+
+595
+00:20:14,640 --> 00:20:20,799
+based on whether the software was any
+
+596
+00:20:17,120 --> 00:20:22,720
+good right because even a slight bit of
+
+597
+00:20:20,799 --> 00:20:24,559
+being bad meant you couldn't get the
+
+598
+00:20:22,720 --> 00:20:27,039
+thing to work at all in such harsh
+
+599
+00:20:24,559 --> 00:20:29,600
+environments right it's sort of like if
+
+600
+00:20:27,039 --> 00:20:31,200
+the explorers were trained in the arctic
+
+601
+00:20:29,600 --> 00:20:34,320
+right
+
+602
+00:20:31,200 --> 00:20:36,400
+then all of them died who who weren't
+
+603
+00:20:34,320 --> 00:20:38,320
+really good or didn't learn really fast
+
+604
+00:20:36,400 --> 00:20:40,880
+right
+
+605
+00:20:38,320 --> 00:20:42,720
+so how are we doing this process now
+
+606
+00:20:40,880 --> 00:20:44,640
+well you know to a certain extent some
+
+607
+00:20:42,720 --> 00:20:47,440
+people are still doing it individually
+
+608
+00:20:44,640 --> 00:20:50,080
+and that tends to also be
+
+609
+00:20:47,440 --> 00:20:51,440
+highly coincident with people who maybe
+
+610
+00:20:50,080 --> 00:20:53,919
+aren't causing
+
+611
+00:20:51,440 --> 00:20:56,159
+quite so much of the uh the bad code
+
+612
+00:20:53,919 --> 00:20:57,919
+explosion but you know probably everyone
+
+613
+00:20:56,159 --> 00:20:59,679
+to a certain extent does work
+
+614
+00:20:57,919 --> 00:21:01,520
+individually and that's just you
+
+615
+00:20:59,679 --> 00:21:02,960
+naturally experiencing things there
+
+616
+00:21:01,520 --> 00:21:05,039
+isn't like an external force kind of
+
+617
+00:21:02,960 --> 00:21:07,360
+pushing at you there you're just playing
+
+618
+00:21:05,039 --> 00:21:10,080
+around and learning on your own
+
+619
+00:21:07,360 --> 00:21:11,760
+but the vast majority of these uh the
+
+620
+00:21:10,080 --> 00:21:14,000
+tuning that happens in those processes
+
+621
+00:21:11,760 --> 00:21:16,799
+now doesn't come from that because again
+
+622
+00:21:14,000 --> 00:21:18,640
+the resources are almost limitless there
+
+623
+00:21:16,799 --> 00:21:20,559
+and there isn't much of a weeding out
+
+624
+00:21:18,640 --> 00:21:22,400
+process that can really happen it's not
+
+625
+00:21:20,559 --> 00:21:24,799
+like on an old home computer that was
+
+626
+00:21:22,400 --> 00:21:26,480
+really difficult to use where you would
+
+627
+00:21:24,799 --> 00:21:27,919
+have to get good automatically because
+
+628
+00:21:26,480 --> 00:21:29,360
+otherwise you'd never be able to do it
+
+629
+00:21:27,919 --> 00:21:30,880
+or you just quit and go do something
+
+630
+00:21:29,360 --> 00:21:32,480
+else
+
+631
+00:21:30,880 --> 00:21:34,880
+so a lot of times where things come from
+
+632
+00:21:32,480 --> 00:21:37,039
+is like classes universities things like
+
+633
+00:21:34,880 --> 00:21:39,200
+that um it might come from like code
+
+634
+00:21:37,039 --> 00:21:40,640
+reviews or like mentors like there's a
+
+635
+00:21:39,200 --> 00:21:41,520
+programmer who ostensibly knows
+
+636
+00:21:40,640 --> 00:21:42,960
+something
+
+637
+00:21:41,520 --> 00:21:44,640
+and they're going to tell you that thing
+
+638
+00:21:42,960 --> 00:21:46,720
+or tell you what to do
+
+639
+00:21:44,640 --> 00:21:48,559
+um you know maybe your boss is really
+
+640
+00:21:46,720 --> 00:21:49,679
+mad and you get a bad performance review
+
+641
+00:21:48,559 --> 00:21:52,400
+or maybe he's really happy you need a
+
+642
+00:21:49,679 --> 00:21:53,840
+good one so you're calibrating based on
+
+643
+00:21:52,400 --> 00:21:55,360
+you know that was good that was bad i
+
+644
+00:21:53,840 --> 00:21:57,440
+don't know
+
+645
+00:21:55,360 --> 00:21:59,840
+you're gonna go read stack overflow
+
+646
+00:21:57,440 --> 00:22:02,240
+something like this right uh and you're
+
+647
+00:21:59,840 --> 00:22:03,280
+gonna look at what people said in there
+
+648
+00:22:02,240 --> 00:22:05,039
+you know what are the answers that are
+
+649
+00:22:03,280 --> 00:22:06,320
+voted up that's kind of like learning
+
+650
+00:22:05,039 --> 00:22:08,559
+what you know supposedly you're supposed
+
+651
+00:22:06,320 --> 00:22:10,000
+to do you go to lectures this lecture
+
+652
+00:22:08,559 --> 00:22:11,679
+for example right you're gonna listen to
+
+653
+00:22:10,000 --> 00:22:13,360
+someone talk and you know they maybe
+
+654
+00:22:11,679 --> 00:22:14,640
+they change your mind or maybe just
+
+655
+00:22:13,360 --> 00:22:15,760
+accept what they say maybe you're
+
+656
+00:22:14,640 --> 00:22:17,440
+critical of what they say i don't know
+
+657
+00:22:15,760 --> 00:22:19,919
+but you know you get some input that way
+
+658
+00:22:17,440 --> 00:22:21,039
+and it affects what's going on in here
+
+659
+00:22:19,919 --> 00:22:23,120
+and again
+
+660
+00:22:21,039 --> 00:22:25,600
+when i look at this i don't think we're
+
+661
+00:22:23,120 --> 00:22:27,600
+doing a terrible job when it comes to
+
+662
+00:22:25,600 --> 00:22:30,559
+like algorithms or stuff like that if
+
+663
+00:22:27,600 --> 00:22:32,960
+someone goes online and tries to search
+
+664
+00:22:30,559 --> 00:22:34,799
+for how to sort something
+
+665
+00:22:32,960 --> 00:22:36,559
+i don't necessarily think that they're
+
+666
+00:22:34,799 --> 00:22:38,480
+going to find like really bad
+
+667
+00:22:36,559 --> 00:22:40,320
+information all the time i don't think
+
+668
+00:22:38,480 --> 00:22:41,520
+that's going to happen you're probably
+
+669
+00:22:40,320 --> 00:22:44,000
+going to be able to find the resources
+
+670
+00:22:41,520 --> 00:22:46,080
+you need to learn how that sort of thing
+
+671
+00:22:44,000 --> 00:22:48,960
+works
+
+672
+00:22:46,080 --> 00:22:50,880
+so what i'm really talking about
+
+673
+00:22:48,960 --> 00:22:53,039
+is i'm talking about that other
+
+674
+00:22:50,880 --> 00:22:55,919
+style of code right the other the part
+
+675
+00:22:53,039 --> 00:22:57,600
+that's not the algorithm exactly itself
+
+676
+00:22:55,919 --> 00:23:00,559
+it's everything else it's all of the
+
+677
+00:22:57,600 --> 00:23:02,880
+infrastructure it's all that other stuff
+
+678
+00:23:00,559 --> 00:23:04,640
+that isn't really studied in the same
+
+679
+00:23:02,880 --> 00:23:08,000
+kind of way right we don't have order
+
+680
+00:23:04,640 --> 00:23:09,120
+notation for it or anything like that
+
+681
+00:23:08,000 --> 00:23:11,840
+and
+
+682
+00:23:09,120 --> 00:23:13,919
+pervasively like all throughout
+
+683
+00:23:11,840 --> 00:23:14,799
+everywhere in the industry what you will
+
+684
+00:23:13,919 --> 00:23:17,280
+see
+
+685
+00:23:14,799 --> 00:23:18,480
+is things that are sort of vague
+
+686
+00:23:17,280 --> 00:23:20,960
+statements
+
+687
+00:23:18,480 --> 00:23:24,080
+about the quality of that code
+
+688
+00:23:20,960 --> 00:23:26,320
+like it's clean right we're gonna we're
+
+689
+00:23:24,080 --> 00:23:28,559
+really washing the code like it's very
+
+690
+00:23:26,320 --> 00:23:30,559
+clean code if you do these things the
+
+691
+00:23:28,559 --> 00:23:32,640
+code will be clean right
+
+692
+00:23:30,559 --> 00:23:34,559
+this sort of thing
+
+693
+00:23:32,640 --> 00:23:35,520
+and what we see is people are taught
+
+694
+00:23:34,559 --> 00:23:37,679
+things
+
+695
+00:23:35,520 --> 00:23:39,360
+that are ostensibly going to make their
+
+696
+00:23:37,679 --> 00:23:41,440
+code clean
+
+697
+00:23:39,360 --> 00:23:44,159
+now they're never really taught
+
+698
+00:23:41,440 --> 00:23:46,480
+what clean code is
+
+699
+00:23:44,159 --> 00:23:48,080
+because nobody has a definition for
+
+700
+00:23:46,480 --> 00:23:50,559
+clean code
+
+701
+00:23:48,080 --> 00:23:52,400
+what they have is a series of things
+
+702
+00:23:50,559 --> 00:23:55,120
+you're supposed to do
+
+703
+00:23:52,400 --> 00:23:57,679
+in order to make the code clean
+
+704
+00:23:55,120 --> 00:24:00,080
+right like in other words we don't have
+
+705
+00:23:57,679 --> 00:24:02,840
+a thing that's like a program you run
+
+706
+00:24:00,080 --> 00:24:04,559
+that says yes clean code no not
+
+707
+00:24:02,840 --> 00:24:06,320
+right
+
+708
+00:24:04,559 --> 00:24:09,039
+what we have is things you're supposed
+
+709
+00:24:06,320 --> 00:24:10,559
+to do and then the code is clean that's
+
+710
+00:24:09,039 --> 00:24:12,880
+all we know
+
+711
+00:24:10,559 --> 00:24:16,080
+so you see acronyms like solid
+
+712
+00:24:12,880 --> 00:24:18,880
+this is taught a lot right
+
+713
+00:24:16,080 --> 00:24:20,000
+and if you look at the things on there
+
+714
+00:24:18,880 --> 00:24:23,279
+none of them
+
+715
+00:24:20,000 --> 00:24:26,799
+have any real world definition they're
+
+716
+00:24:23,279 --> 00:24:29,120
+not things that happen inside a computer
+
+717
+00:24:26,799 --> 00:24:30,240
+they're things that happen entirely in
+
+718
+00:24:29,120 --> 00:24:32,960
+your head
+
+719
+00:24:30,240 --> 00:24:35,039
+they are things that affect
+
+720
+00:24:32,960 --> 00:24:37,360
+what code you think you are allowed to
+
+721
+00:24:35,039 --> 00:24:39,120
+write that filter
+
+722
+00:24:37,360 --> 00:24:41,840
+is being trained
+
+723
+00:24:39,120 --> 00:24:44,400
+to use these metrics
+
+724
+00:24:41,840 --> 00:24:46,080
+which are largely fictional they're
+
+725
+00:24:44,400 --> 00:24:48,799
+imaginary metrics we came up with they
+
+726
+00:24:46,080 --> 00:24:51,760
+don't correspond to a
+
+727
+00:24:48,799 --> 00:24:53,600
+hard measurable fact of a cpu right so
+
+728
+00:24:51,760 --> 00:24:56,320
+we made them up
+
+729
+00:24:53,600 --> 00:24:58,720
+you're being trained not to write code
+
+730
+00:24:56,320 --> 00:25:02,799
+that would violate these or to write
+
+731
+00:24:58,720 --> 00:25:04,960
+code that would like evince these right
+
+732
+00:25:02,799 --> 00:25:06,080
+now lest you think i'm joking when i say
+
+733
+00:25:04,960 --> 00:25:07,440
+that this is something that people are
+
+734
+00:25:06,080 --> 00:25:08,320
+taught to do because some people are
+
+735
+00:25:07,440 --> 00:25:09,520
+like what are you talking about no one
+
+736
+00:25:08,320 --> 00:25:10,960
+teaches that well
+
+737
+00:25:09,520 --> 00:25:13,440
+literally when i went to go grab the
+
+738
+00:25:10,960 --> 00:25:16,240
+screenshot for stack overflow when i was
+
+739
+00:25:13,440 --> 00:25:18,320
+like uh gonna put a slide for that well
+
+740
+00:25:16,240 --> 00:25:21,440
+this was their blog right
+
+741
+00:25:18,320 --> 00:25:23,679
+so literally the day i happen to grab
+
+742
+00:25:21,440 --> 00:25:26,400
+the screenshot their blog is telling
+
+743
+00:25:23,679 --> 00:25:28,159
+people to do this on stack overflow the
+
+744
+00:25:26,400 --> 00:25:30,960
+place where people go to get programming
+
+745
+00:25:28,159 --> 00:25:30,960
+answers right
+
+746
+00:25:31,440 --> 00:25:34,799
+so
+
+747
+00:25:32,480 --> 00:25:36,880
+what these things
+
+748
+00:25:34,799 --> 00:25:38,480
+all have in common because solid's not
+
+749
+00:25:36,880 --> 00:25:40,400
+the only one there's plenty of other
+
+750
+00:25:38,480 --> 00:25:42,320
+things like this where we teach
+
+751
+00:25:40,400 --> 00:25:44,240
+clean code or try to convince people to
+
+752
+00:25:42,320 --> 00:25:47,360
+write clean code
+
+753
+00:25:44,240 --> 00:25:49,919
+what they all share is one very
+
+754
+00:25:47,360 --> 00:25:52,559
+important very bad characteristic and
+
+755
+00:25:49,919 --> 00:25:54,080
+that is they do not attempt to measure
+
+756
+00:25:52,559 --> 00:25:58,640
+anything
+
+757
+00:25:54,080 --> 00:26:01,520
+there is no measurement of anything
+
+758
+00:25:58,640 --> 00:26:03,919
+that we would actually care about
+
+759
+00:26:01,520 --> 00:26:06,799
+it's simply implied
+
+760
+00:26:03,919 --> 00:26:08,080
+that things we actually care about would
+
+761
+00:26:06,799 --> 00:26:10,480
+happen
+
+762
+00:26:08,080 --> 00:26:12,240
+if you follow these things
+
+763
+00:26:10,480 --> 00:26:14,159
+right
+
+764
+00:26:12,240 --> 00:26:15,760
+if you take your code
+
+765
+00:26:14,159 --> 00:26:17,760
+and you make sure
+
+766
+00:26:15,760 --> 00:26:19,600
+that it obeys the list off substitution
+
+767
+00:26:17,760 --> 00:26:22,400
+principle for all like classes that
+
+768
+00:26:19,600 --> 00:26:24,880
+could be substituted or something
+
+769
+00:26:22,400 --> 00:26:27,600
+nobody has any argument anywhere that
+
+770
+00:26:24,880 --> 00:26:30,799
+i've ever seen that suggests that that
+
+771
+00:26:27,600 --> 00:26:32,720
+actually improves some real world metric
+
+772
+00:26:30,799 --> 00:26:34,559
+that we've measured
+
+773
+00:26:32,720 --> 00:26:37,120
+the assumption
+
+774
+00:26:34,559 --> 00:26:38,960
+is that if you do that your development
+
+775
+00:26:37,120 --> 00:26:41,919
+process will take less time or be
+
+776
+00:26:38,960 --> 00:26:43,919
+smoother or have less bugs or something
+
+777
+00:26:41,919 --> 00:26:46,080
+the code will be cleaner it's just an
+
+778
+00:26:43,919 --> 00:26:48,400
+abstract statement
+
+779
+00:26:46,080 --> 00:26:50,880
+that if you do these things the code
+
+780
+00:26:48,400 --> 00:26:52,240
+will be cleaner and somehow
+
+781
+00:26:50,880 --> 00:26:53,919
+that will affect something you can
+
+782
+00:26:52,240 --> 00:26:55,200
+actually measure but we're never going
+
+783
+00:26:53,919 --> 00:26:58,000
+to say what that something actually is
+
+784
+00:26:55,200 --> 00:26:59,679
+or try to quantify it
+
+785
+00:26:58,000 --> 00:27:01,679
+now
+
+786
+00:26:59,679 --> 00:27:04,799
+i mean seriously look at these things
+
+787
+00:27:01,679 --> 00:27:08,240
+right is any of those teaching somebody
+
+788
+00:27:04,799 --> 00:27:09,200
+to actually think about a real effect
+
+789
+00:27:08,240 --> 00:27:11,120
+no
+
+790
+00:27:09,200 --> 00:27:12,640
+they're teaching people something
+
+791
+00:27:11,120 --> 00:27:14,240
+they're supposed to do
+
+792
+00:27:12,640 --> 00:27:15,840
+which is taking that filter and
+
+793
+00:27:14,240 --> 00:27:18,000
+modifying it
+
+794
+00:27:15,840 --> 00:27:20,399
+but it's not actually giving it any
+
+795
+00:27:18,000 --> 00:27:22,240
+actual guidance about like a metric or
+
+796
+00:27:20,399 --> 00:27:24,960
+something they're trying to accomplish
+
+797
+00:27:22,240 --> 00:27:28,640
+it's just wrote
+
+798
+00:27:24,960 --> 00:27:29,520
+now to me that's just like a ritual
+
+799
+00:27:28,640 --> 00:27:32,000
+right
+
+800
+00:27:29,520 --> 00:27:34,159
+if you're literally just saying like you
+
+801
+00:27:32,000 --> 00:27:36,159
+do these sets of things and the code is
+
+802
+00:27:34,159 --> 00:27:38,240
+clean it's very much like oh you know
+
+803
+00:27:36,159 --> 00:27:40,960
+like like we're gonna bless the food
+
+804
+00:27:38,240 --> 00:27:43,679
+before we eat it right
+
+805
+00:27:40,960 --> 00:27:46,000
+and these might make you feel better
+
+806
+00:27:43,679 --> 00:27:48,399
+and you may want to do them
+
+807
+00:27:46,000 --> 00:27:51,360
+but at the end of the day
+
+808
+00:27:48,399 --> 00:27:54,000
+they are not directly tethered to
+
+809
+00:27:51,360 --> 00:27:55,360
+anything we actually care about
+
+810
+00:27:54,000 --> 00:27:57,520
+rituals
+
+811
+00:27:55,360 --> 00:27:59,440
+may have served a purpose once or they
+
+812
+00:27:57,520 --> 00:28:01,200
+may never have served a purpose
+
+813
+00:27:59,440 --> 00:28:03,279
+and when we do them today what we're
+
+814
+00:28:01,200 --> 00:28:05,760
+largely doing is just doing them because
+
+815
+00:28:03,279 --> 00:28:07,760
+someone told us to do them they claimed
+
+816
+00:28:05,760 --> 00:28:10,640
+that by doing them we would get some
+
+817
+00:28:07,760 --> 00:28:12,880
+outcome but we're never really told
+
+818
+00:28:10,640 --> 00:28:14,320
+how those rituals were supposed to
+
+819
+00:28:12,880 --> 00:28:17,679
+really accomplish that we're just
+
+820
+00:28:14,320 --> 00:28:19,440
+supposed to assume that they do
+
+821
+00:28:17,679 --> 00:28:21,760
+now this is troublesome because
+
+822
+00:28:19,440 --> 00:28:24,480
+computers are actual things
+
+823
+00:28:21,760 --> 00:28:26,320
+the model in your mind of what i'm
+
+824
+00:28:24,480 --> 00:28:28,799
+targeting when i'm trying to make my
+
+825
+00:28:26,320 --> 00:28:30,480
+code and i'm trying to do that filter
+
+826
+00:28:28,799 --> 00:28:33,279
+that process the generator filter
+
+827
+00:28:30,480 --> 00:28:33,279
+process in my brain
+
+828
+00:28:33,840 --> 00:28:37,520
+if what i'm targeting
+
+829
+00:28:35,520 --> 00:28:39,840
+is solid
+
+830
+00:28:37,520 --> 00:28:41,440
+i'm by definition not targeting the
+
+831
+00:28:39,840 --> 00:28:42,240
+actual computer
+
+832
+00:28:41,440 --> 00:28:43,840
+right
+
+833
+00:28:42,240 --> 00:28:45,760
+the thing that i'm supposed to be
+
+834
+00:28:43,840 --> 00:28:48,159
+worrying about which is a computer that
+
+835
+00:28:45,760 --> 00:28:50,880
+runs this code is nowhere to be found in
+
+836
+00:28:48,159 --> 00:28:52,399
+that acronym right it's not there
+
+837
+00:28:50,880 --> 00:28:54,480
+anywhere
+
+838
+00:28:52,399 --> 00:28:57,360
+furthermore i'm not measuring my
+
+839
+00:28:54,480 --> 00:28:59,679
+development time solid nowhere in it
+
+840
+00:28:57,360 --> 00:29:01,200
+says hey by the way
+
+841
+00:28:59,679 --> 00:29:02,880
+actually these are all just supposed to
+
+842
+00:29:01,200 --> 00:29:03,760
+save development time so if you end up
+
+843
+00:29:02,880 --> 00:29:05,919
+seeing that you're not saving
+
+844
+00:29:03,760 --> 00:29:08,399
+development time stop doing it right
+
+845
+00:29:05,919 --> 00:29:10,640
+nobody says that
+
+846
+00:29:08,399 --> 00:29:10,640
+right
+
+847
+00:29:11,279 --> 00:29:14,480
+so i don't want to give you a new
+
+848
+00:29:13,200 --> 00:29:17,440
+acronym
+
+849
+00:29:14,480 --> 00:29:20,080
+because i don't think it's very useful
+
+850
+00:29:17,440 --> 00:29:21,760
+but to underscore the difference between
+
+851
+00:29:20,080 --> 00:29:25,440
+that acronym and what i would have
+
+852
+00:29:21,760 --> 00:29:26,559
+expected to see the trite acronym be
+
+853
+00:29:25,440 --> 00:29:28,960
+i would expect it to be something like
+
+854
+00:29:26,559 --> 00:29:32,080
+this i even arranged it in a way you can
+
+855
+00:29:28,960 --> 00:29:34,240
+say warmed just like solid
+
+856
+00:29:32,080 --> 00:29:36,159
+and what this is is just say look
+
+857
+00:29:34,240 --> 00:29:37,600
+if we're gonna teach something that goes
+
+858
+00:29:36,159 --> 00:29:38,960
+up in the filter
+
+859
+00:29:37,600 --> 00:29:41,600
+what it should be
+
+860
+00:29:38,960 --> 00:29:44,000
+is the actual things that programmers
+
+861
+00:29:41,600 --> 00:29:46,080
+need to care about
+
+862
+00:29:44,000 --> 00:29:47,840
+and then if something like solid was
+
+863
+00:29:46,080 --> 00:29:50,399
+actually a good idea
+
+864
+00:29:47,840 --> 00:29:52,399
+you would be able to evaluate that very
+
+865
+00:29:50,399 --> 00:29:55,840
+effectively by caring about things we
+
+866
+00:29:52,399 --> 00:29:57,679
+actually do and to me those things are
+
+867
+00:29:55,840 --> 00:30:00,480
+writing the code
+
+868
+00:29:57,679 --> 00:30:02,320
+agreeing on code if we have to have more
+
+869
+00:30:00,480 --> 00:30:04,480
+than one person
+
+870
+00:30:02,320 --> 00:30:06,000
+reading code because not only did we not
+
+871
+00:30:04,480 --> 00:30:07,440
+write all the code usually but even if
+
+872
+00:30:06,000 --> 00:30:08,880
+we did we might forget what we wrote so
+
+873
+00:30:07,440 --> 00:30:11,279
+we have to be able to read it we're
+
+874
+00:30:08,880 --> 00:30:13,440
+still to modify the code the code has to
+
+875
+00:30:11,279 --> 00:30:14,960
+execute on hardware
+
+876
+00:30:13,440 --> 00:30:17,039
+and then we have to be able to debug it
+
+877
+00:30:14,960 --> 00:30:18,799
+right
+
+878
+00:30:17,039 --> 00:30:20,720
+now if you look at these things maybe
+
+879
+00:30:18,799 --> 00:30:23,120
+you would say argue is better because
+
+880
+00:30:20,720 --> 00:30:25,600
+like coders don't agree on stuff they
+
+881
+00:30:23,120 --> 00:30:27,039
+argue about stuff right but either way
+
+882
+00:30:25,600 --> 00:30:29,279
+whichever one you want to think of it
+
+883
+00:30:27,039 --> 00:30:31,919
+it's still the same acronym so you know
+
+884
+00:30:29,279 --> 00:30:34,480
+i made sure that would work
+
+885
+00:30:31,919 --> 00:30:35,760
+now each of these things is a cost right
+
+886
+00:30:34,480 --> 00:30:37,520
+that's what i'm talking about each of
+
+887
+00:30:35,760 --> 00:30:40,240
+those things is a cost
+
+888
+00:30:37,520 --> 00:30:42,559
+execution is a cost of the actual
+
+889
+00:30:40,240 --> 00:30:45,039
+computation it's the most important cost
+
+890
+00:30:42,559 --> 00:30:46,640
+the e right how much does it cost to
+
+891
+00:30:45,039 --> 00:30:48,240
+execute this thing on the end user's
+
+892
+00:30:46,640 --> 00:30:50,640
+computer they're the people who are
+
+893
+00:30:48,240 --> 00:30:53,360
+ostensibly paying us and we are wasting
+
+894
+00:30:50,640 --> 00:30:54,320
+their time if that cost is very high
+
+895
+00:30:53,360 --> 00:30:55,919
+because we've shipped them something
+
+896
+00:30:54,320 --> 00:30:58,320
+lousy right
+
+897
+00:30:55,919 --> 00:31:00,960
+the rest of the cost or development time
+
+898
+00:30:58,320 --> 00:31:03,440
+right and those affect the customer
+
+899
+00:31:00,960 --> 00:31:05,360
+because if we never get the code done or
+
+900
+00:31:03,440 --> 00:31:06,720
+if it takes us too long to fix problems
+
+901
+00:31:05,360 --> 00:31:08,480
+in the code or if it takes us too long
+
+902
+00:31:06,720 --> 00:31:10,799
+to add features that affects the
+
+903
+00:31:08,480 --> 00:31:12,399
+customer too so all of those things are
+
+904
+00:31:10,799 --> 00:31:14,080
+costs that we ostensibly care about and
+
+905
+00:31:12,399 --> 00:31:16,000
+while i would say maybe execution should
+
+906
+00:31:14,080 --> 00:31:17,679
+be prioritized they're all important
+
+907
+00:31:16,000 --> 00:31:19,279
+right you can't just focus on one of the
+
+908
+00:31:17,679 --> 00:31:21,120
+exclusion of the others so what you're
+
+909
+00:31:19,279 --> 00:31:23,279
+trying to do is figure out a way to
+
+910
+00:31:21,120 --> 00:31:24,720
+minimize all those costs and you kind of
+
+911
+00:31:23,279 --> 00:31:26,720
+want to minimize as many of them as you
+
+912
+00:31:24,720 --> 00:31:28,640
+can with maybe different weights on them
+
+913
+00:31:26,720 --> 00:31:31,200
+depending on what you care about most
+
+914
+00:31:28,640 --> 00:31:34,480
+but that's what you're doing
+
+915
+00:31:31,200 --> 00:31:37,279
+so again pretty simple right
+
+916
+00:31:34,480 --> 00:31:38,480
+i've never seen anything like this
+
+917
+00:31:37,279 --> 00:31:40,240
+you don't go to conferences and have
+
+918
+00:31:38,480 --> 00:31:41,760
+people say like look this is what we
+
+919
+00:31:40,240 --> 00:31:43,760
+should be caring about
+
+920
+00:31:41,760 --> 00:31:45,679
+let's try to evaluate things on these
+
+921
+00:31:43,760 --> 00:31:47,440
+any you know people maybe throw up their
+
+922
+00:31:45,679 --> 00:31:49,679
+hands and say well you can't possibly
+
+923
+00:31:47,440 --> 00:31:52,320
+measure these things yes you can
+
+924
+00:31:49,679 --> 00:31:55,519
+i mean it's very easy to measure how
+
+925
+00:31:52,320 --> 00:31:57,919
+many github back and forths people have
+
+926
+00:31:55,519 --> 00:31:59,360
+before they actually fix an issue
+
+927
+00:31:57,919 --> 00:32:01,440
+it's easy to measure how many meetings
+
+928
+00:31:59,360 --> 00:32:02,960
+you're having it's easy to measure how
+
+929
+00:32:01,440 --> 00:32:04,559
+long it took you to write this piece of
+
+930
+00:32:02,960 --> 00:32:06,799
+code right
+
+931
+00:32:04,559 --> 00:32:08,720
+we are an industry that does
+
+932
+00:32:06,799 --> 00:32:11,760
+an infinite amount of a b testing on our
+
+933
+00:32:08,720 --> 00:32:14,159
+users and yet somehow we don't seem to
+
+934
+00:32:11,760 --> 00:32:15,919
+think it's very important to actually do
+
+935
+00:32:14,159 --> 00:32:17,840
+like a b testing with any kind of
+
+936
+00:32:15,919 --> 00:32:21,279
+metrics on any of the stuff we claim
+
+937
+00:32:17,840 --> 00:32:21,279
+we're supposed to be doing right
+
+938
+00:32:21,679 --> 00:32:28,159
+so let's try to bring it back to
+
+939
+00:32:24,960 --> 00:32:30,880
+bad code where does it come from
+
+940
+00:32:28,159 --> 00:32:32,399
+well i tried to give you the analogy
+
+941
+00:32:30,880 --> 00:32:34,080
+programmers are explorers they're
+
+942
+00:32:32,399 --> 00:32:35,679
+starting from somewhere
+
+943
+00:32:34,080 --> 00:32:37,519
+and they have a vague destination in
+
+944
+00:32:35,679 --> 00:32:38,720
+mind that they've been told to get to or
+
+945
+00:32:37,519 --> 00:32:40,000
+that they picked
+
+946
+00:32:38,720 --> 00:32:42,559
+and they have to get there but they
+
+947
+00:32:40,000 --> 00:32:44,000
+don't have any real knowledge of where
+
+948
+00:32:42,559 --> 00:32:46,480
+it is
+
+949
+00:32:44,000 --> 00:32:48,320
+well in this analogy what we've done
+
+950
+00:32:46,480 --> 00:32:49,840
+with all the stuff i just said
+
+951
+00:32:48,320 --> 00:32:51,279
+is effectively instead of giving this
+
+952
+00:32:49,840 --> 00:32:53,120
+something like a compass we just give
+
+953
+00:32:51,279 --> 00:32:54,399
+them tools that don't make any sense
+
+954
+00:32:53,120 --> 00:32:56,720
+we're even like a hammer and a tape
+
+955
+00:32:54,399 --> 00:32:58,640
+measure or something like that right and
+
+956
+00:32:56,720 --> 00:33:01,440
+we're like here you go set off on this
+
+957
+00:32:58,640 --> 00:33:03,200
+journey here's a hammer
+
+958
+00:33:01,440 --> 00:33:04,480
+now the worst part about it is it's not
+
+959
+00:33:03,200 --> 00:33:05,519
+even as bad as giving someone a hammer
+
+960
+00:33:04,480 --> 00:33:06,559
+because the real world person would know
+
+961
+00:33:05,519 --> 00:33:07,440
+that the hammer was useless to throw it
+
+962
+00:33:06,559 --> 00:33:09,760
+away
+
+963
+00:33:07,440 --> 00:33:12,159
+we've told them that this hammer
+
+964
+00:33:09,760 --> 00:33:14,159
+is critical for navigation so they're
+
+965
+00:33:12,159 --> 00:33:15,760
+like trying to like hold it up to the
+
+966
+00:33:14,159 --> 00:33:17,360
+sun or something and figure out like
+
+967
+00:33:15,760 --> 00:33:19,440
+which directs they're going they have no
+
+968
+00:33:17,360 --> 00:33:21,200
+idea that we've given them tools that
+
+969
+00:33:19,440 --> 00:33:22,480
+are not even relevant to the problem
+
+970
+00:33:21,200 --> 00:33:25,519
+that they're solving they're not
+
+971
+00:33:22,480 --> 00:33:27,760
+actually tools that measure anything
+
+972
+00:33:25,519 --> 00:33:31,760
+they're just arbitrary we just gave them
+
+973
+00:33:27,760 --> 00:33:33,519
+to them and and said here you go right
+
+974
+00:33:31,760 --> 00:33:35,519
+similarly we spent all our time talking
+
+975
+00:33:33,519 --> 00:33:37,519
+about a map that doesn't exist
+
+976
+00:33:35,519 --> 00:33:39,279
+we're talking about things like liskoff
+
+977
+00:33:37,519 --> 00:33:41,279
+substitution principle as if that has
+
+978
+00:33:39,279 --> 00:33:43,440
+something to do with programming
+
+979
+00:33:41,279 --> 00:33:45,919
+now it has something to do with certain
+
+980
+00:33:43,440 --> 00:33:47,760
+ideas in certain languages that someone
+
+981
+00:33:45,919 --> 00:33:48,880
+hypothetically thought might be
+
+982
+00:33:47,760 --> 00:33:51,120
+important
+
+983
+00:33:48,880 --> 00:33:53,120
+but it's entirely fictional it's like
+
+984
+00:33:51,120 --> 00:33:54,720
+middle earth right
+
+985
+00:33:53,120 --> 00:33:55,760
+your lord of the rings might be a great
+
+986
+00:33:54,720 --> 00:33:57,360
+story
+
+987
+00:33:55,760 --> 00:34:00,159
+but if you actually need to get from
+
+988
+00:33:57,360 --> 00:34:01,679
+south uh south america to africa
+
+989
+00:34:00,159 --> 00:34:03,679
+it's not gonna help you to be thinking
+
+990
+00:34:01,679 --> 00:34:04,640
+about like where mortar is on a map
+
+991
+00:34:03,679 --> 00:34:06,960
+right
+
+992
+00:34:04,640 --> 00:34:09,119
+you have a mental model that's been
+
+993
+00:34:06,960 --> 00:34:10,720
+tuned for things that have nothing to do
+
+994
+00:34:09,119 --> 00:34:12,079
+with the actual stuff you're trying to
+
+995
+00:34:10,720 --> 00:34:14,240
+solve
+
+996
+00:34:12,079 --> 00:34:15,760
+so we shouldn't be surprised when like
+
+997
+00:34:14,240 --> 00:34:17,919
+new programmers
+
+998
+00:34:15,760 --> 00:34:20,399
+come up and they just do ridiculous
+
+999
+00:34:17,919 --> 00:34:21,200
+stuff and these things will not control
+
+1000
+00:34:20,399 --> 00:34:23,280
+because
+
+1001
+00:34:21,200 --> 00:34:24,800
+they had no metrics they had nothing to
+
+1002
+00:34:23,280 --> 00:34:26,159
+tether them back
+
+1003
+00:34:24,800 --> 00:34:28,399
+to what they were actually trying to
+
+1004
+00:34:26,159 --> 00:34:30,879
+accomplish we basically made their
+
+1005
+00:34:28,399 --> 00:34:32,879
+entire filter process be about things
+
+1006
+00:34:30,879 --> 00:34:34,879
+that are different from the actual
+
+1007
+00:34:32,879 --> 00:34:36,960
+things we want to achieve
+
+1008
+00:34:34,879 --> 00:34:39,200
+what else would we expect
+
+1009
+00:34:36,960 --> 00:34:39,200
+right
+
+1010
+00:34:39,359 --> 00:34:44,000
+so i think in modern day
+
+1011
+00:34:42,000 --> 00:34:46,240
+when you've gone up through that system
+
+1012
+00:34:44,000 --> 00:34:47,760
+and you didn't have the luxury
+
+1013
+00:34:46,240 --> 00:34:49,119
+or the hardship depending how you want
+
+1014
+00:34:47,760 --> 00:34:51,200
+to look at it
+
+1015
+00:34:49,119 --> 00:34:53,760
+of having to do programming in a
+
+1016
+00:34:51,200 --> 00:34:55,520
+constrained environment
+
+1017
+00:34:53,760 --> 00:34:57,680
+you end up thinking that things are
+
+1018
+00:34:55,520 --> 00:34:59,359
+completely insurmountable you're like
+
+1019
+00:34:57,680 --> 00:35:00,560
+you're like i don't know how we would
+
+1020
+00:34:59,359 --> 00:35:02,320
+ever do
+
+1021
+00:35:00,560 --> 00:35:04,720
+this program any differently than what
+
+1022
+00:35:02,320 --> 00:35:07,119
+we're doing right it's got to be a
+
+1023
+00:35:04,720 --> 00:35:08,640
+million lines of code and super slow and
+
+1024
+00:35:07,119 --> 00:35:10,000
+buggy and well like like this is just
+
+1025
+00:35:08,640 --> 00:35:12,240
+how it's done
+
+1026
+00:35:10,000 --> 00:35:14,320
+you can't even envision what the other
+
+1027
+00:35:12,240 --> 00:35:16,400
+thing is because you haven't ever been
+
+1028
+00:35:14,320 --> 00:35:18,000
+given the tools to get there right and
+
+1029
+00:35:16,400 --> 00:35:20,480
+furthermore you're going to do you're
+
+1030
+00:35:18,000 --> 00:35:22,560
+going to have been taught a lot
+
+1031
+00:35:20,480 --> 00:35:24,160
+that code reuse is good
+
+1032
+00:35:22,560 --> 00:35:26,000
+well the problem is the code that you're
+
+1033
+00:35:24,160 --> 00:35:27,920
+going to be reusing right
+
+1034
+00:35:26,000 --> 00:35:29,839
+i mean that's like in the narrative the
+
+1035
+00:35:27,920 --> 00:35:32,240
+analogy of navigation that's like base
+
+1036
+00:35:29,839 --> 00:35:34,079
+camp right it's like starting out at a
+
+1037
+00:35:32,240 --> 00:35:36,800
+camp that someone else made
+
+1038
+00:35:34,079 --> 00:35:38,480
+well the problem is they were lost too
+
+1039
+00:35:36,800 --> 00:35:40,320
+they had no idea where they are so
+
+1040
+00:35:38,480 --> 00:35:42,320
+you're typically taking a library made
+
+1041
+00:35:40,320 --> 00:35:44,320
+by somebody who didn't really know what
+
+1042
+00:35:42,320 --> 00:35:45,920
+they were doing and that's your new
+
+1043
+00:35:44,320 --> 00:35:48,079
+starting point right
+
+1044
+00:35:45,920 --> 00:35:50,400
+so people who failed to get to a
+
+1045
+00:35:48,079 --> 00:35:53,040
+destination that we wanted to go to
+
+1046
+00:35:50,400 --> 00:35:55,040
+are now also the jumping off point and
+
+1047
+00:35:53,040 --> 00:35:56,720
+this gets worse than libraries whole
+
+1048
+00:35:55,040 --> 00:36:00,400
+languages
+
+1049
+00:35:56,720 --> 00:36:02,880
+whole platform ecosystems are this way
+
+1050
+00:36:00,400 --> 00:36:04,880
+so we're literally starting our
+
+1051
+00:36:02,880 --> 00:36:06,960
+navigators off
+
+1052
+00:36:04,880 --> 00:36:08,480
+already lost in the wilderness with no
+
+1053
+00:36:06,960 --> 00:36:10,320
+chance of ever getting to the to the
+
+1054
+00:36:08,480 --> 00:36:11,359
+actual place making it way harder than
+
+1055
+00:36:10,320 --> 00:36:14,000
+it would have been if we just started
+
+1056
+00:36:11,359 --> 00:36:16,400
+back in port originally right
+
+1057
+00:36:14,000 --> 00:36:17,680
+but they don't know that
+
+1058
+00:36:16,400 --> 00:36:19,119
+because we've never been measuring any
+
+1059
+00:36:17,680 --> 00:36:21,440
+of this
+
+1060
+00:36:19,119 --> 00:36:23,520
+so can this be fixed
+
+1061
+00:36:21,440 --> 00:36:25,440
+i mean sure i think it could obviously
+
+1062
+00:36:23,520 --> 00:36:27,760
+be fixed because we have examples in the
+
+1063
+00:36:25,440 --> 00:36:30,000
+past of programmers being trained up not
+
+1064
+00:36:27,760 --> 00:36:31,119
+to do these things right
+
+1065
+00:36:30,000 --> 00:36:33,200
+and so i think the first thing we need
+
+1066
+00:36:31,119 --> 00:36:35,040
+to do is like start talking about the
+
+1067
+00:36:33,200 --> 00:36:38,000
+real world
+
+1068
+00:36:35,040 --> 00:36:39,359
+whenever we're talking about something
+
+1069
+00:36:38,000 --> 00:36:40,880
+conferences
+
+1070
+00:36:39,359 --> 00:36:42,880
+programming language constructs all
+
+1071
+00:36:40,880 --> 00:36:45,040
+these things
+
+1072
+00:36:42,880 --> 00:36:48,000
+we should be talking about how it
+
+1073
+00:36:45,040 --> 00:36:51,040
+actually affects the results
+
+1074
+00:36:48,000 --> 00:36:54,240
+what construct a real argument for how a
+
+1075
+00:36:51,040 --> 00:36:56,480
+number goes down in the cost category
+
+1076
+00:36:54,240 --> 00:36:59,040
+right
+
+1077
+00:36:56,480 --> 00:37:02,000
+we should be giving people tools like
+
+1078
+00:36:59,040 --> 00:37:03,839
+the one i suggested that actually
+
+1079
+00:37:02,000 --> 00:37:06,960
+measure something we care about not
+
+1080
+00:37:03,839 --> 00:37:09,040
+something we just assume that we care
+
+1081
+00:37:06,960 --> 00:37:11,920
+about because
+
+1082
+00:37:09,040 --> 00:37:14,480
+that will lock it in right
+
+1083
+00:37:11,920 --> 00:37:16,880
+all of these things are very much like
+
+1084
+00:37:14,480 --> 00:37:18,880
+the sort of navigation base camp analogy
+
+1085
+00:37:16,880 --> 00:37:21,119
+any time we start someone off from a
+
+1086
+00:37:18,880 --> 00:37:22,720
+place that we haven't verified is
+
+1087
+00:37:21,119 --> 00:37:24,560
+actually really good
+
+1088
+00:37:22,720 --> 00:37:28,079
+we create a huge problem for all the
+
+1089
+00:37:24,560 --> 00:37:29,280
+things they will do in the future right
+
+1090
+00:37:28,079 --> 00:37:30,480
+and
+
+1091
+00:37:29,280 --> 00:37:32,560
+when i
+
+1092
+00:37:30,480 --> 00:37:36,000
+talk about things like that
+
+1093
+00:37:32,560 --> 00:37:38,880
+what i'm saying is don't just say stuff
+
+1094
+00:37:36,000 --> 00:37:41,280
+right don't just talk about
+
+1095
+00:37:38,880 --> 00:37:42,880
+this is clean code
+
+1096
+00:37:41,280 --> 00:37:45,359
+actually measure
+
+1097
+00:37:42,880 --> 00:37:47,839
+have something we can measure
+
+1098
+00:37:45,359 --> 00:37:51,440
+this produced less lines of code for the
+
+1099
+00:37:47,839 --> 00:37:53,839
+same equivalent execution right
+
+1100
+00:37:51,440 --> 00:37:55,280
+not it's less lines of code because if
+
+1101
+00:37:53,839 --> 00:37:57,359
+it's less lines of code but it runs
+
+1102
+00:37:55,280 --> 00:37:59,440
+worse that didn't help anybody this is
+
+1103
+00:37:57,359 --> 00:38:02,640
+less lines of code it's easier for
+
+1104
+00:37:59,440 --> 00:38:04,560
+people to read why not because we talked
+
+1105
+00:38:02,640 --> 00:38:05,599
+about it and decided it was easier to
+
+1106
+00:38:04,560 --> 00:38:07,760
+read
+
+1107
+00:38:05,599 --> 00:38:09,520
+but because we actually checked when a
+
+1108
+00:38:07,760 --> 00:38:12,480
+new person comes to the company they are
+
+1109
+00:38:09,520 --> 00:38:14,320
+now able to read the code faster
+
+1110
+00:38:12,480 --> 00:38:15,280
+it used to take a day for them to like
+
+1111
+00:38:14,320 --> 00:38:17,200
+read this
+
+1112
+00:38:15,280 --> 00:38:19,200
+part and come up to speed on it now it
+
+1113
+00:38:17,200 --> 00:38:21,760
+takes two hours right
+
+1114
+00:38:19,200 --> 00:38:23,040
+we can measure this stuff it's real
+
+1115
+00:38:21,760 --> 00:38:24,560
+world stuff
+
+1116
+00:38:23,040 --> 00:38:25,760
+right
+
+1117
+00:38:24,560 --> 00:38:28,240
+and of course
+
+1118
+00:38:25,760 --> 00:38:30,480
+start actually putting measuring the
+
+1119
+00:38:28,240 --> 00:38:31,520
+performance of things people actually
+
+1120
+00:38:30,480 --> 00:38:32,960
+knowing what the performance of
+
+1121
+00:38:31,520 --> 00:38:34,560
+something should be
+
+1122
+00:38:32,960 --> 00:38:36,720
+that should have been fundamental the
+
+1123
+00:38:34,560 --> 00:38:39,200
+whole time right
+
+1124
+00:38:36,720 --> 00:38:40,960
+the acronym solid should never be
+
+1125
+00:38:39,200 --> 00:38:43,040
+allowed to exist
+
+1126
+00:38:40,960 --> 00:38:46,079
+if it doesn't have like
+
+1127
+00:38:43,040 --> 00:38:47,920
+p solid like performance right like
+
+1128
+00:38:46,079 --> 00:38:49,359
+there should have been something about
+
+1129
+00:38:47,920 --> 00:38:52,079
+how do any of these things that you're
+
+1130
+00:38:49,359 --> 00:38:54,480
+doing affect the actual run time of the
+
+1131
+00:38:52,079 --> 00:38:54,480
+program
+
+1132
+00:38:54,720 --> 00:38:58,240
+so
+
+1133
+00:38:56,000 --> 00:39:00,640
+again
+
+1134
+00:38:58,240 --> 00:39:02,640
+this is just my take on it a lot of
+
+1135
+00:39:00,640 --> 00:39:04,320
+these things are very difficult to prove
+
+1136
+00:39:02,640 --> 00:39:06,320
+or disprove because we don't have
+
+1137
+00:39:04,320 --> 00:39:07,599
+formalisms for them the way we do for
+
+1138
+00:39:06,320 --> 00:39:10,960
+things like algorithms one of the
+
+1139
+00:39:07,599 --> 00:39:12,960
+reasons algorithms are probably better
+
+1140
+00:39:10,960 --> 00:39:15,440
+in terms of how far they've developed is
+
+1141
+00:39:12,960 --> 00:39:17,680
+because we can test them more concretely
+
+1142
+00:39:15,440 --> 00:39:19,839
+we have a language to talk about them
+
+1143
+00:39:17,680 --> 00:39:22,079
+but i don't fundamentally think these
+
+1144
+00:39:19,839 --> 00:39:23,440
+problems of the code that's not the
+
+1145
+00:39:22,079 --> 00:39:25,599
+algorithm
+
+1146
+00:39:23,440 --> 00:39:27,280
+are as impenetrable as we're making them
+
+1147
+00:39:25,599 --> 00:39:31,280
+out to be
+
+1148
+00:39:27,280 --> 00:39:33,680
+we just need to actually focus on
+
+1149
+00:39:31,280 --> 00:39:35,839
+something we can point to something we
+
+1150
+00:39:33,680 --> 00:39:38,160
+can measure
+
+1151
+00:39:35,839 --> 00:39:39,440
+why does tensorflow take four hours to
+
+1152
+00:39:38,160 --> 00:39:40,839
+build
+
+1153
+00:39:39,440 --> 00:39:43,599
+or whatever it takes
+
+1154
+00:39:40,839 --> 00:39:45,680
+nowadays why
+
+1155
+00:39:43,599 --> 00:39:48,320
+that should not be happening
+
+1156
+00:39:45,680 --> 00:39:49,440
+it does not do anything that complicated
+
+1157
+00:39:48,320 --> 00:39:51,599
+right
+
+1158
+00:39:49,440 --> 00:39:53,920
+so how did we get there
+
+1159
+00:39:51,599 --> 00:39:54,720
+we can measure that we know what's going
+
+1160
+00:39:53,920 --> 00:39:57,280
+on
+
+1161
+00:39:54,720 --> 00:39:59,200
+and we know the kinds of things the
+
+1162
+00:39:57,280 --> 00:40:01,839
+kinds of filter processes that we've
+
+1163
+00:39:59,200 --> 00:40:03,760
+been putting in people's heads result
+
+1164
+00:40:01,839 --> 00:40:05,520
+in code bases like that
+
+1165
+00:40:03,760 --> 00:40:07,440
+we need to start
+
+1166
+00:40:05,520 --> 00:40:08,880
+like actually nailing those down and
+
+1167
+00:40:07,440 --> 00:40:10,800
+saying no
+
+1168
+00:40:08,880 --> 00:40:13,520
+don't teach people to do these things
+
+1169
+00:40:10,800 --> 00:40:17,839
+anymore they're producing obviously bad
+
+1170
+00:40:13,520 --> 00:40:19,760
+results that we can measure because
+
+1171
+00:40:17,839 --> 00:40:22,319
+it takes for our hearts to build right
+
+1172
+00:40:19,760 --> 00:40:22,319
+we can tell
+
+1173
+00:40:22,400 --> 00:40:25,440
+so
+
+1174
+00:40:23,200 --> 00:40:27,760
+hopefully that gives a little bit of
+
+1175
+00:40:25,440 --> 00:40:30,720
+perspective on how i think about where
+
+1176
+00:40:27,760 --> 00:40:32,560
+bad code comes from
+
+1177
+00:40:30,720 --> 00:40:33,599
+i wish i had an answer that was more
+
+1178
+00:40:32,560 --> 00:40:35,760
+magical
+
+1179
+00:40:33,599 --> 00:40:39,359
+but at the end of the day i really think
+
+1180
+00:40:35,760 --> 00:40:40,880
+that bad code just comes from that one
+
+1181
+00:40:39,359 --> 00:40:43,839
+simple failure
+
+1182
+00:40:40,880 --> 00:40:45,280
+and that is we have stopped measuring
+
+1183
+00:40:43,839 --> 00:40:47,280
+and talking about
+
+1184
+00:40:45,280 --> 00:40:49,359
+what we actually want
+
+1185
+00:40:47,280 --> 00:40:52,400
+and we are almost exclusively talking
+
+1186
+00:40:49,359 --> 00:40:54,160
+about or measuring things that are
+
+1187
+00:40:52,400 --> 00:40:55,359
+largely fictional
+
+1188
+00:40:54,160 --> 00:40:57,760
+they don't
+
+1189
+00:40:55,359 --> 00:41:00,319
+directly connect back
+
+1190
+00:40:57,760 --> 00:41:03,040
+and once you make that jump
+
+1191
+00:41:00,319 --> 00:41:05,839
+the next generation never knows about
+
+1192
+00:41:03,040 --> 00:41:06,800
+the earlier part right they only see
+
+1193
+00:41:05,839 --> 00:41:08,079
+solid
+
+1194
+00:41:06,800 --> 00:41:09,920
+they don't know
+
+1195
+00:41:08,079 --> 00:41:11,520
+that there's all these other things they
+
+1196
+00:41:09,920 --> 00:41:14,480
+should actually have been thinking about
+
+1197
+00:41:11,520 --> 00:41:18,079
+and solid was just someone's random idea
+
+1198
+00:41:14,480 --> 00:41:20,960
+about maybe some good rules of thumb
+
+1199
+00:41:18,079 --> 00:41:23,359
+but you'd never teach that as your first
+
+1200
+00:41:20,960 --> 00:41:26,960
+thing right you'd always teach the
+
+1201
+00:41:23,359 --> 00:41:28,480
+evaluation of real metrics first
+
+1202
+00:41:26,960 --> 00:41:30,720
+that was the end of the lecture i hope
+
+1203
+00:41:28,480 --> 00:41:32,720
+you enjoyed it uh like i said please
+
+1204
+00:41:30,720 --> 00:41:34,400
+check out our kickstarter links in the
+
+1205
+00:41:32,720 --> 00:41:35,920
+description below we'd love to send you
+
+1206
+00:41:34,400 --> 00:41:37,839
+a graphic novel or two if you get a
+
+1207
+00:41:35,920 --> 00:41:38,960
+chance we only have a few days left
+
+1208
+00:41:37,839 --> 00:41:40,160
+because this is the end of our whole
+
+1209
+00:41:38,960 --> 00:41:42,160
+promotional thing and the kickstarter
+
+1210
+00:41:40,160 --> 00:41:44,000
+wraps up in like five days i think from
+
+1211
+00:41:42,160 --> 00:41:45,680
+when this video will be posted so please
+
+1212
+00:41:44,000 --> 00:41:48,880
+check it out if you get a chance there
+
+1213
+00:41:45,680 --> 00:41:51,680
+will be one more video it's the q a for
+
+1214
+00:41:48,880 --> 00:41:54,400
+this so after the lecture i took
+
+1215
+00:41:51,680 --> 00:41:56,480
+questions uh from the actual employees
+
+1216
+00:41:54,400 --> 00:41:59,599
+of the company uh to whom i was
+
+1217
+00:41:56,480 --> 00:42:02,079
+presenting so i didn't want to put them
+
+1218
+00:41:59,599 --> 00:42:03,920
+into the actual video so what it will
+
+1219
+00:42:02,079 --> 00:42:05,680
+actually be is like i will summarize the
+
+1220
+00:42:03,920 --> 00:42:07,200
+question like on a card and then i'll
+
+1221
+00:42:05,680 --> 00:42:09,119
+answer it so you can see my actual
+
+1222
+00:42:07,200 --> 00:42:10,720
+answers but without the actual people
+
+1223
+00:42:09,119 --> 00:42:12,319
+who asked the questions but there were
+
+1224
+00:42:10,720 --> 00:42:13,839
+some good questions so i wanted to
+
+1225
+00:42:12,319 --> 00:42:16,800
+provide those as well so i'll be back
+
+1226
+00:42:13,839 --> 00:42:18,400
+here uh for part two tomorrow until then
+
+1227
+00:42:16,800 --> 00:42:21,800
+have fun programming everyone and i'll
+
+1228
+00:42:18,400 --> 00:42:21,800
+see you on the internet
+
