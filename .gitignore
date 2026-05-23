@@ -1,0 +1,23 @@
+# Claude Code project-local state (settings, transcripts, etc.)
+.claude/
+
+# Local utility scripts (per user preference — kept out of source control)
+scripts/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
